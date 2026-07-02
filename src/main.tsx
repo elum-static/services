@@ -8,6 +8,7 @@ const APP_ID = 1;
 const APP_PLATFORM = "tma";
 const SOCKET_PATH = "/ws";
 const TASKS_LOCALE = "ru";
+const AUTH_TIMEOUT_MS = 8000;
 
 type TelegramWebApp = {
   initData: string;
@@ -118,14 +119,21 @@ function emitAck<T>(socket: Socket, event: string, payload: unknown): Promise<T>
 function App() {
   const [socket, setSocket] = createSignal<Socket | null>(null);
   const [connected, setConnected] = createSignal(false);
+  const [authorized, setAuthorized] = createSignal(false);
   const [authUser, setAuthUser] = createSignal<unknown>(null);
   const [tasks, setTasks] = createSignal<Task[]>([]);
   const [error, setError] = createSignal("");
-  const [loading, setLoading] = createSignal(true);
+  const [loading, setLoading] = createSignal(false);
   const [log, setLog] = createSignal<string[]>([]);
 
   const initData = createMemo(getLaunchParams);
   const hasTelegramData = createMemo(() => initData().length > 0);
+  const statusLabel = createMemo(() => {
+    if (authorized()) return "Authorized";
+    if (connected()) return "Connected";
+    if (loading()) return "Connecting";
+    return "Disconnected";
+  });
 
   function addLog(message: string) {
     setLog((items) => [`${new Date().toLocaleTimeString()} ${message}`, ...items].slice(0, 20));
@@ -142,6 +150,15 @@ function App() {
     tg?.ready();
     tg?.expand();
 
+    if (!hasTelegramData()) {
+      setError("Telegram initData is empty. Open this page as a Telegram Mini App.");
+      addLog("telegram initData is empty, socket connection skipped");
+      return;
+    }
+
+    setLoading(true);
+    setError("");
+
     const client = io(SERVER_URL, {
       path: SOCKET_PATH,
       transports: ["websocket"],
@@ -156,6 +173,14 @@ function App() {
     });
 
     setSocket(client);
+    let authTimeout = window.setTimeout(() => {
+      if (!authorized()) {
+        setLoading(false);
+        setError("Socket connected, but authorization response was not received.");
+        addLog("auth timeout");
+        client.disconnect();
+      }
+    }, AUTH_TIMEOUT_MS);
 
     client.on("connect", () => {
       setConnected(true);
@@ -170,12 +195,19 @@ function App() {
 
     client.on("disconnect", (reason) => {
       setConnected(false);
+      setAuthorized(false);
+      setLoading(false);
       addLog(`socket disconnected: ${reason}`);
+      if (!authUser()) {
+        setError(`Socket disconnected before authorization: ${reason}`);
+      }
     });
 
     client.on("auth", async (payload: Envelope<{ user: unknown }>) => {
       try {
+        window.clearTimeout(authTimeout);
         const response = unwrapAck(payload);
+        setAuthorized(true);
         setAuthUser(response.user);
         addLog("auth ok");
         await loadTasks(client);
@@ -187,6 +219,7 @@ function App() {
     });
 
     onCleanup(() => {
+      window.clearTimeout(authTimeout);
       client.disconnect();
     });
   });
@@ -202,8 +235,8 @@ function App() {
             запрашивает список заданий.
           </p>
         </div>
-        <div classList={{ badge: true, ok: connected(), bad: !connected() }}>
-          {connected() ? "Connected" : "Disconnected"}
+        <div classList={{ badge: true, ok: authorized(), bad: !authorized() }}>
+          {statusLabel()}
         </div>
       </section>
 
@@ -223,7 +256,7 @@ function App() {
           <h2>Tasks</h2>
           <button
             type="button"
-            disabled={!socket() || loading()}
+            disabled={!socket() || !authorized() || loading()}
             onClick={() => {
               const client = socket();
               if (!client) return;
