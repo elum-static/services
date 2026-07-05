@@ -1,0 +1,409 @@
+.Video {
+  position: relative;
+  width   : 100%;
+  height  : 100%;
+
+  box-sizing: border-box;
+}
+
+.Video__fallback {
+  position       : absolute;
+  left           : 0;
+  right          : 0;
+  top            : 0;
+  bottom         : 0;
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+  z-index        : 100;
+}
+
+.Video__fallback--preview {
+  z-index: 10;
+}
+
+.Video__element {
+  position  : relative;
+  z-index   : 3;
+  width     : 100%;
+  height    : 100%;
+  display   : block;
+  box-sizing: border-box;
+
+  background-color: var(--separator_secondary);
+}
+
+.Video__prev {
+  display   : block;
+  position  : absolute;
+  left      : -10px;
+  right     : 0;
+  top       : -10px;
+  bottom    : 0;
+  height    : calc(100% + 20px);
+  width     : calc(100% + 20px);
+  object-fit: cover;
+  filter    : blur(10px);
+  z-index   : 2;
+}
+
+.Video__fit--cover .Video__element {
+  object-fit: cover;
+}
+
+.Video__fit--contain .Video__element {
+  object-fit: contain;
+}
+
+.Video__fit--fill .Video__element {
+  object-fit: fill;
+}
+
+/* NEW */
+.Video__type--default {
+  position  : relative;
+  width     : 100%;
+  min-width : 100%;
+  min-height: 100%;
+  overflow  : hidden;
+}
+
+.Video__type--circle {
+  position     : relative;
+  aspect-ratio : 1 / 1;
+  width        : 100%;
+  min-width    : 100%;
+  min-height   : 100%;
+  border-radius: 50%;
+  overflow     : hidden;
+}
+
+.Video__controls--progress::before {
+  position: absolute;
+  content : " ";
+  left    : 0;
+  right   : 0;
+  top     : 0;
+  bottom  : 0;
+}
+
+.Video::before {
+  content : " ";
+  position: absolute;
+  left    : 0;
+  top     : 0;
+  bottom  : 0;
+  right   : 0;
+
+  z-index: 4;
+
+  background-color: var(--fixed_color_black);
+  opacity         : 0;
+
+  transition: 0.3s;
+}
+
+.Video._video-playedOnce._video-pause.Video__controlsInit--progress::before {
+  opacity: 0.6;
+}
+
+.Video__controls--progress {
+  position: absolute;
+  top     : 0;
+  left    : 0;
+
+  transform: rotate(-90deg);
+  width    : calc(100% - 8px);
+  height   : calc(100% - 8px);
+  margin   : 4px;
+
+
+
+  z-index: 4;
+
+
+  overflow: visible;
+
+  transition: 0.3s ease-in-out;
+  transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  --strokeWidth  : 4px;
+  --radius       : calc((100% - var(--strokeWidth)) / 2);
+  --circumference: calc(2 * 3.14 * var(--radius));
+
+  opacity: 0;
+}
+
+.Video._video-playedOnce .Video__controls--progress {
+  opacity: 1;
+}
+
+.Video__controls--progress--circle1 {
+  cx: calc(100% / 2);
+  cy: calc(100% / 2);
+
+  r: var(--radius);
+
+  stroke-width: var(--strokeWidth);
+}
+
+.Video__controls--progress--circle2 {
+  cx: calc(100% / 2);
+  cy: calc(100% / 2);
+
+  r: var(--radius);
+
+  stroke      : white;
+  stroke-width: var(--strokeWidth);
+
+  stroke-dasharray : var(--circumference);
+  stroke-dashoffset: calc(var(--circumference) * (1 - var(--progress)));
+
+  /* transition: stroke-dashoffset 0.3s linear; */
+  opacity: 0.8;
+}
+
+.Video__controls--progress--circle3 {
+  opacity: 0;
+
+  cx   : calc(100% / 2);
+  cy   : calc(100% / 2);
+  /* r : calc(var(--radius) * 0.08); */
+  r    : 14px;
+
+  fill: white;
+
+  transform       : rotate(calc(var(--progress) * 360deg)) translate(var(--radius), 0);
+  transform-origin: calc(100% / 2) calc(100% / 2);
+}
+
+/* pause */
+
+.Video._video-pause .Video__controls--progress {
+  margin: 20px;
+  width : calc(100% - 40px);
+  height: calc(100% - 40px);
+}
+
+.Video._video-pause .Video__controls--progress--circle2 {
+  transition: none;
+}
+
+.Video._video-pause .Video__controls--progress--circle3 {
+  opacity: 1;
+}
+
+/* pause */
+.Video__controls--pause {
+  position: relative;
+  z-index : 10;
+
+  padding: 6px;
+
+  overflow       : hidden;
+  transform      : translateZ(0px) scale(0);
+  backdrop-filter: blur(4px);
+
+  color: var(--fixed_color_white);
+}
+
+.Video._video-played .Video__controls--pause {
+  transform: scale(1);
+}
+
+/* error */
+
+.Video__controls--error::before {
+  content         : " ";
+  position        : absolute;
+  left            : 0;
+  right           : 0;
+  top             : 0;
+  bottom          : 0;
+  background-color: var(--fixed_color_black);
+  opacity         : 0.7;
+}
+
+.Video__controls--error-icon {
+  position: relative;
+  z-index : 2;
+}
+
+.Video__controls--error {
+  position: absolute;
+  left    : 0;
+  right   : 0;
+  top     : 0;
+  bottom  : 0;
+  z-index : 100;
+
+
+  padding: 6px;
+
+  overflow             : hidden;
+  transform            : translateZ(0px) scale(0);
+  /* border-radius     : 100px; */
+  /* backdrop-filter   : blur(4px); */
+
+  color: var(--fixed_color_white);
+
+  transition: 0.3s ease-in-out;
+  transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  pointer-events: none;
+
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+  opacity        : 0;
+
+}
+
+.Video._video-error .Video__controls--error {
+  opacity  : 1;
+  transform: scale(1);
+}
+
+/* play */
+
+.Video__controls--play::before,
+.Video__controls--play::after {
+  content         : " ";
+  position        : absolute;
+  left            : 0;
+  right           : 0;
+  top             : 0;
+  bottom          : 0;
+  background-color: var(--fixed_color_black);
+  opacity         : 0.5;
+}
+
+.Video__controls--play::after {
+  background-color: var(--fixed_color_white);
+}
+
+.Video__controls--play {
+  position: relative;
+  z-index : 10;
+
+  padding: 6px;
+
+  overflow          : hidden;
+  transform         : scale(0);
+  /* backdrop-filter: blur(4px); */
+  border-radius     : 100px;
+
+  color: var(--fixed_color_white);
+
+  transition: 0.3s ease-in-out;
+  transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  pointer-events: none;
+  opacity       : 0;
+}
+
+.Video__controls--play-icon {
+  position: relative;
+  z-index : 2;
+}
+
+.Video._video-pause .Video__controls--play {
+  transform: scale(1);
+  opacity  : 1;
+}
+
+
+.Video__controls {
+  position: absolute;
+  left    : 0;
+  right   : 0;
+  top     : 0;
+  bottom  : 0;
+}
+
+/* loader */
+.Video__controls--loader::before {
+  content         : " ";
+  position        : absolute;
+  left            : 0;
+  right           : 0;
+  top             : 0;
+  bottom          : 0;
+  background-color: var(--fixed_color_black);
+  opacity         : 0.7;
+}
+
+.Video__controls--loader {
+  position: absolute;
+  left    : 0;
+  right   : 0;
+  top     : 0;
+  bottom  : 0;
+
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+
+  z-index: 13;
+
+  padding: 6px;
+
+  overflow: hidden;
+
+  transform      : translateZ(0px);
+  backdrop-filter: blur(4px);
+  opacity        : 0;
+
+  color: var(--fixed_color_white);
+
+  transition: 0.3s ease-in-out;
+  transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  pointer-events: none;
+}
+
+
+.Video__type--circle .Video__controls--loader {
+  border-radius: 50%;
+}
+
+.Video._video-loading .Video__controls--loader {
+  opacity: 1;
+}
+
+.Video._video-loading .Video__element {
+  visibility: hidden;
+}
+
+/* preview */
+.Video__controls--preview {
+  position: absolute;
+  left    : 0;
+  top     : 0;
+  bottom  : 0;
+  right   : 0;
+
+  z-index: 10;
+
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+
+  pointer-events: none;
+}
+
+/* all */
+
+/* Скрываем элементы управления при ошибке */
+.Video._video-error .Video__controls--loader {
+  transform: scale(0);
+}
+
+.Video._video-error .Video__controls--play {
+  transform: scale(0);
+}
+
+/* Скрываем элементы управления при загрузке */
+.Video._video-loading .Video__controls--play {
+  transform: scale(0);
+}

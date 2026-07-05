@@ -1,0 +1,14 @@
+.Icon__size--medium {
+  width : 24px;
+  height: 24px;
+}
+
+.Icon__size--large {
+  width : 48px;
+  height: 48px;
+}
+
+.Icon__size--xx-large {
+  width : 84px;
+  height: 84px;
+}

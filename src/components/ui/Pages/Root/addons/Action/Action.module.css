@@ -1,0 +1,80 @@
+.Action {
+  position      : relative;
+  overflow      : hidden;
+  width         : 100%;
+  height        : 100%;
+  display       : flex;
+  flex-direction: column;
+  min-height    : -webkit-fill-available;
+}
+
+.Action--active,
+.Action--back {
+  display: block;
+  width  : 100%;
+  height : 100%;
+}
+
+.Action__Container {
+  transition: top 0.3s ease-in-out;
+  position  : absolute;
+  top       : 0;
+  bottom    : 0;
+  left      : 0;
+  right     : 0;
+}
+
+.Action--index-1 {
+  z-index: 1;
+}
+
+.Action--index-2 {
+  z-index: 2;
+}
+
+.Action__bar {
+  position: absolute;
+  width   : 100%;
+  z-index : 3;
+  bottom  : 0;
+}
+
+.Action--to-next>.Action--first {
+  animation: _iOSActionAnimation 0.12s linear forwards;
+}
+
+.Action--to-next>.Action--last {
+  animation: _iOSActionAnimation2 0.12s linear forwards;
+}
+
+.Action--to-back>.Action--first {
+  animation: _iOSActionAnimation 0.12s linear forwards;
+}
+
+.Action--to-back>.Action--last {
+  animation: _iOSActionAnimation2 0.12s linear forwards;
+}
+
+@keyframes _iOSActionAnimation {
+  0% {
+    opacity  : 0;
+    transform: scale(0.99);
+  }
+
+  100% {
+    opacity  : 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes _iOSActionAnimation2 {
+  100% {
+    opacity  : 0;
+    transform: scale(0.99);
+  }
+
+  0% {
+    opacity  : 1;
+    transform: scale(1);
+  }
+}

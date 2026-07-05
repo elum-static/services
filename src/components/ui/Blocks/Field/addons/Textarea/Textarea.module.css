@@ -1,0 +1,53 @@
+.Textarea {
+  position  : relative;
+  display   : block;
+  width     : 100%;
+  min-height: var(--min_height_textarea);
+  max-width : 100%;
+  resize    : none;
+
+  background-color: color-mix(in srgb, var(--background_textarea) 85%, transparent);
+
+  border: solid 0.5px var(--separator_primary);
+
+  backdrop-filter: blur(3px);
+
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1),
+    inset 0 0 20px rgba(255, 255, 255, 0.05);
+
+
+  appearance                 : none;
+  border                     : none;
+  outline                    : 0;
+  margin                     : 0;
+  padding                    : 10px 12px;
+  border-radius              : inherit;
+  box-sizing                 : border-box;
+  -webkit-tap-highlight-color: transparent;
+
+  color      : var(--text_primary);
+  font-size  : 16px;
+  line-height: 20px;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  -ms-overflow-style: none;
+  scrollbar-width   : none;
+}
+
+.Textarea::-webkit-scrollbar {
+  width : 0;
+  height: 0;
+}
+
+.Textarea--resize {
+  resize: both
+}
+
+.Textarea::placeholder {
+  color      : var(--text_secondary);
+  font-size  : inherit;
+  line-height: inherit;
+}

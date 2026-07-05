@@ -1,0 +1,6 @@
+.Referral__block {
+  width        : 100%;
+  box-shadow   : var(--glass-shadow);
+  border-radius: 13px;
+  padding      : 10px;
+}

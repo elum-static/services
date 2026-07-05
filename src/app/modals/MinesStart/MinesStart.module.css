@@ -1,0 +1,26 @@
+.MinesStart__inputGroup {
+  background   : rgba(255, 255, 255, 0.06);
+  border-radius: 18px;
+  padding      : 12px;
+
+  display       : flex;
+  flex-direction: column;
+  gap           : 10px;
+}
+
+.MinesStart__minesCard {
+  box-sizing   : border-box;
+  width        : 100%;
+  border-radius: 16px;
+  padding      : 10px;
+  background   : rgba(255, 255, 255, 0.06);
+
+  gap: 20px;
+}
+
+.MinesStart__button {
+  /* aspect-ratio: 1 / 1; */
+  width: 100%;
+  flex : 1 1;
+
+}

@@ -1,0 +1,59 @@
+.Root--to-next>.Root--first {
+  animation: _AndroidRootNextAnimation .4s ease-in-out forwards;
+}
+
+/* .Root--to-next::before {
+  animation: _upShadow .41s ease forwards;
+} */
+
+.Root--to-back>.Root--last {
+  animation: _AndroidRootBackAnimation .41s ease-in-out forwards;
+}
+
+/* .Root--to-back::before {
+  animation: _downShadow .41s ease forwards;
+} */
+
+@keyframes _AndroidRootNextAnimation {
+  from {
+    opacity  : 0;
+    transform: scale(1.2)
+  }
+
+  to {
+    opacity  : 1;
+    transform: scale(1)
+  }
+}
+
+@keyframes _AndroidRootBackAnimation {
+  from {
+    opacity  : 1;
+    transform: scale(1)
+  }
+
+  to {
+    opacity  : 0;
+    transform: scale(1.2)
+  }
+}
+
+@keyframes _upShadow {
+  from {
+    opacity: 0
+  }
+
+  to {
+    opacity: 1
+  }
+}
+
+@keyframes _downShadow {
+  from {
+    opacity: 1
+  }
+
+  to {
+    opacity: 0
+  }
+}

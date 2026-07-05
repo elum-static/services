@@ -1,0 +1,10 @@
+.Control {
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+  width          : 100%;
+  position       : relative;
+
+  border-radius: 0px 0px var(--global-border-radius) var(--global-border-radius);
+  overflow     : hidden;
+}

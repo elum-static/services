@@ -1,0 +1,95 @@
+.Badge {
+  position: relative;
+
+  color: white;
+
+  transition: 0.3s;
+}
+
+.Badge__in {
+  position: relative;
+}
+
+/* hidden */
+.Badge--hidden {
+  transform: scale(0);
+}
+
+/* padding */
+.Badge__padding--default {
+  padding: 4px;
+}
+
+.Badge__padding--large {
+  padding: 8px;
+}
+
+.Badge__padding--compact {
+  padding: 2px 6px;
+}
+
+.Badge__bgColor--accent {
+  background-color: var(--color_accent);
+  color           : var(--color_accent--text);
+}
+
+.Badge__bgColor--sp-primary {
+  background-color: var(--separator_primary);
+  color           : var(--text_primary);
+}
+
+.Badge__bgColor--pink {
+  background-color: var(--color__badge--pink);
+}
+
+.Badge__bgColor--skyblue {
+  background-color: var(--color__badge--skyblue);
+}
+
+.Badge__bgColor--sand {
+  background-color: var(--color__badge--sand);
+}
+
+.Badge__bgColor--mint {
+  background-color: var(--color__badge--mint);
+}
+
+.Badge__bgColor--orange {
+  background-color: var(--color__badge--orange);
+}
+
+.Badge__bgColor--blue {
+  background-color: var(--color__badge--blue);
+}
+
+.Badge__bgColor--yellow {
+  background-color: var(--color__badge--yellow);
+}
+
+.Badge__bgColor--purple {
+  background-color: var(--color__badge--purple);
+}
+
+.Badge__bgColor--gray {
+  background-color: var(--color__badge--gray);
+}
+
+.Badge__bgColor--red {
+  background-color: var(--color__badge--red);
+}
+
+.Badge__bgColor--amber {
+  background-color: var(--color__badge--amber);
+}
+
+.Badge__bgColor--cyan {
+  background-color: var(--color__badge--cyan);
+}
+
+.Badge__bgColor--green {
+  background-color: var(--color__badge--green);
+}
+
+.Badge__bgColor--logo_gradient {
+  background-color: #0077fc;
+}

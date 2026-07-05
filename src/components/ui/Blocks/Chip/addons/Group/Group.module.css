@@ -1,0 +1,7 @@
+.Group {
+  position: relative;
+  padding : var(--global-padding);
+  gap     : 5px;
+
+  box-sizing: border-box;
+}

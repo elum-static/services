@@ -1,0 +1,61 @@
+.Link {
+  font-weight: inherit;
+  font-size  : inherit;
+  line-height: inherit;
+
+  position        : relative;
+  box-sizing      : border-box;
+  appearance      : none;
+  background-color: transparent;
+  border          : none;
+  padding         : 0;
+  margin          : 0;
+
+  display: inline-block;
+
+  text-align: inherit;
+}
+
+.Link::after {
+  transition      : 0.1s;
+  content         : " ";
+  position        : absolute;
+  left            : 0;
+  right           : 0;
+  top             : 0;
+  bottom          : 0;
+  background-color: transparent;
+  opacity         : 0;
+
+  pointer-events: none;
+}
+
+.Link._hover::after {}
+
+.Link._active::after {}
+
+/* colors */
+.Link__color--primary {
+  --comp_link_color: var(--link_color);
+  color            : var(--text_primary);
+}
+
+.Link__color--accentColor {
+  --comp_link_color: var(--color_accent--text);
+  color            : var(--comp_link_color);
+}
+
+.Link__color--accent {
+  --comp_link_color: var(--link_color);
+  color            : var(--comp_link_color);
+}
+
+.Link--nowrap {
+  white-space: nowrap;
+}
+
+.Link--overflow {
+  max-width    : 100%;
+  overflow     : hidden;
+  text-overflow: ellipsis;
+}

@@ -1,0 +1,148 @@
+.Root {
+  display         : flex;
+  position        : absolute;
+  top             : 0;
+  right           : 0;
+  bottom          : 0;
+  left            : 0;
+  flex-direction  : column;
+  z-index         : 99;
+  background-color: transparent;
+
+  transition: all 0.3s;
+
+}
+
+/* .Root::before {
+  content: "";
+  display: flex;
+  height: calc(55px + var(--safe-area-inset-top));
+} */
+
+.Root--to-up {
+  backdrop-filter: blur(12px);
+}
+
+.Root--to-down {
+  backdrop-filter: blur(0px);
+}
+
+.Root--hidden {
+  backdrop-filter: blur(0px);
+}
+
+.Root__inner {
+  display       : flex;
+  flex          : 1 1;
+  flex-direction: column-reverse;
+  flex-wrap     : nowrap;
+}
+
+.Root__container {
+  display   : flex;
+  width     : 100%;
+  min-height: 100%;
+
+  justify-content: center;
+  align-items    : center;
+
+  transform: translateZ(0px);
+}
+
+.Root::before {
+  content   : " ";
+  position  : absolute;
+  left      : 0;
+  right     : 0;
+  top       : 0;
+  bottom    : 0;
+  opacity   : 0.4;
+  transition: 0.3s;
+
+  pointer-events: none;
+
+  transform: translateZ(0px);
+}
+
+.Root--to-up::before {
+  background-color: var(--background_modal_layout_shadow);
+}
+
+.Root--to-down::before {
+  background-color: var(--background_modal_layout_shadow);
+}
+
+.Root--show::before {
+  background-color: transparent;
+}
+
+.Root--hidden {
+  pointer-events: none;
+}
+
+.Root--to-up .Root__container {
+  -webkit-animation: _RootUp .4s forwards;
+  animation        : _RootUp .4s forwards;
+}
+
+.Root--to-down .Root__container {
+  -webkit-animation: _RootDown .4s forwards;
+  animation        : _RootDown .4s forwards;
+}
+
+
+/* @media (width>=720px) {
+  .Root--to-up .Root__container {
+    -webkit-animation: _RootUp2 .4s forwards;
+    animation        : _RootUp2 .4s forwards;
+  }
+
+  .Root--to-down .Root__container {
+    -webkit-animation: _RootDown2 .4s forwards;
+    animation        : _RootDown2 .4s forwards;
+  }
+}
+
+@keyframes _RootUp2 {
+  0% {
+    transform: scale(0.8);
+    opacity  : 0;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity  : 1;
+  }
+}
+
+@keyframes _RootDown2 {
+  0% {
+    transform: scale(1);
+    opacity  : 1;
+  }
+
+  100% {
+    transform: scale(0.8);
+    opacity  : 0;
+  }
+} */
+
+@keyframes _RootUp {
+  0% {
+    transform: translateY(100%);
+  }
+
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+@keyframes _RootDown {
+  0% {
+    transform: translateY(0%);
+  }
+
+  100% {
+    transform: translateY(100%);
+  }
+}

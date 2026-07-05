@@ -1,0 +1,91 @@
+.SeasonItem {
+  position: relative;
+  width   : 100%;
+}
+
+.SeasonItem__after {
+  position: relative;
+
+  width: 100%;
+}
+
+.SeasonItem__cell {
+  height    : 100%;
+  min-height: 72px;
+
+  border-radius   : 14px;
+  box-shadow      : var(--glass-shadow);
+  background-color: var(--background_primary);
+}
+
+.SeasonItem__before {
+  position        : relative;
+  display         : block;
+  border-radius   : 24px;
+  box-shadow      : var(--glass-shadow);
+  background-color: var(--background_primary);
+  padding         : 8px;
+
+  overflow : hidden;
+  min-width: fit-content;
+}
+
+.SeasonItem__lightning {
+  gap  : 2px;
+  color: var(--color_lightning);
+}
+
+.SeasonItem__reward__animation {
+  position: absolute;
+  width   : 150%;
+  top     : 50%;
+  left    : 50%;
+
+  mask: radial-gradient(circle, #000 22%, #0000 74%);
+
+  aspect-ratio  : 1;
+  pointer-events: none;
+  border-radius : 50%;
+  margin        : 0 auto;
+  transform     : translate(-50%, -50%) scaleY(1);
+  background    : repeating-conic-gradient(#ffffff13, #ffffff13 25deg, #0000 25deg, #0000 40deg);
+
+  animation: _RaysSpin 10s linear infinite;
+  opacity  : 0.3;
+}
+
+@keyframes _RaysSpin {
+  0% {
+    transform: translate(-50%, -50%)scaleY(1)rotate(0)
+  }
+
+  to {
+    transform: translate(-50%, -50%)scaleY(1)rotate(1turn)
+  }
+}
+
+.SeasonItem__position {
+  position: absolute;
+  right   : 32px;
+  top     : -9px;
+
+  border-radius: 8px;
+
+  padding: 2px 8px;
+
+  text-align: center;
+  min-width : 16px;
+
+  font-size: 10px;
+
+  color           : var(--text_secondary);
+  background-color: var(--background_primary);
+  box-shadow      : var(--glass-shadow);
+
+  z-index: 10;
+}
+
+.SeasonItem__position--accent .SeasonItem__position {
+  color           : white;
+  background-color: var(--color_accent);
+}

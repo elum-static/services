@@ -1,0 +1,17 @@
+.SegmentedControl {
+  padding: 0px 12px;
+}
+
+.SegmentedControl:first-child {
+  margin-top: 12px;
+}
+
+.SegmentedControl:last-child {
+  margin-bottom: 12px;
+}
+
+.SegmentedControl__in {
+  background-color: var(--background_secondary);
+
+  border-radius: 8px;
+}

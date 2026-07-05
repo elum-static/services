@@ -1,0 +1,52 @@
+.SegmentedControl {
+  position: relative;
+  padding : 0px;
+  height  : 54px;
+}
+
+.SegmentedControl__in {
+  padding         : 1px;
+  background-color: var(--background_primary);
+  gap             : 0px;
+
+  position: relative;
+  height  : 100%;
+  overflow: hidden;
+  color   : var(--btn_cr_accent-filled) !important;
+}
+
+.SegmentedControl__background {
+  background-color: var(--btn_bg_accent-filled);
+  position        : absolute;
+  left            : 0;
+  right           : 0;
+  bottom          : 0;
+  top             : 0;
+  border-radius   : inherit;
+  z-index         : 2;
+
+
+  overflow      : hidden;
+  pointer-events: none;
+}
+
+.SegmentedControl__background_in {
+  position: absolute;
+  left    : 0;
+  right   : 0;
+  top     : 0;
+  bottom  : 0;
+  z-index : 20;
+}
+
+.SegmentedControl--anim .SegmentedControl__background,
+.SegmentedControl--anim .SegmentedControl__background_in {
+  transition: 0.3s ease-in-out;
+}
+
+.SegmentedControl__separator {
+  /* min-height: -webkit-fill-available; */
+  height       : calc(100% - 10px);
+  /* margin    : 8px 0px; */
+  box-sizing   : border-box;
+}

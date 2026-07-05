@@ -1,0 +1,52 @@
+.Spinner {}
+
+/* Size */
+.Spinner__size--auto svg {
+  width : 100%;
+  height: 100%;
+}
+
+.Spinner__size--small svg {
+  width : 20px;
+  height: 20px;
+}
+
+.Spinner__size--small .Spinner__progress {
+  font-size: 6px;
+}
+
+.Spinner__size--regular svg {
+  width : 28px;
+  height: 28px;
+}
+
+.Spinner__size--regular .Spinner__progress {
+  font-size: 9px;
+}
+
+.Spinner__size--medium svg {
+  width : 36px;
+  height: 36px;
+}
+
+.Spinner__size--medium .Spinner__progress {
+  font-size: 12px;
+}
+
+.Spinner__size--large svg {
+  width : 48px;
+  height: 48px;
+}
+
+.Spinner__size--large .Spinner__progress {
+  font-size: 16px;
+}
+
+.Spinner__size--x-large svg {
+  width : 54px;
+  height: 54px;
+}
+
+.Spinner__size--x-large .Spinner__progress {
+  font-size: 20px;
+}

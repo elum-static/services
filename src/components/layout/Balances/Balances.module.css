@@ -1,0 +1,21 @@
+.Balances {
+  padding-top: 16px;
+}
+
+.Balances__item {
+  box-shadow: var(--glass-shadow);
+  padding   : 8px 16px;
+
+  /* background-color: var(--background_primary); */
+  background-color: color-mix(in oklab, var(--fixed_color_white) 15%, transparent);
+
+  backdrop-filter: blur(8px)saturate(var(--saturation));
+  color          : #FFFFFF;
+
+  border-radius: 24px;
+
+
+  font-size  : 16px;
+  line-height: normal;
+  font-weight: 500;
+}

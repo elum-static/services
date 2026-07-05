@@ -1,0 +1,50 @@
+:root {
+  /* Filled */
+  --btn_bg_white-filled: #FFFFFF;
+  --btn_cr_white-filled: #1A1A1A;
+  --btn_br_white-filled: #FFFFFF;
+
+  --btn_bg_white-filled--hover: #E5E5E5;
+  --btn_cr_white-filled--hover: #1A1A1A;
+  --btn_br_white-filled--hover: #E5E5E5;
+
+  --btn_bg_white-filled--active: #CCCCCC;
+  --btn_cr_white-filled--active: #1A1A1A;
+  --btn_br_white-filled--active: #CCCCCC;
+  /* Outline */
+  --btn_bg_white-outline       : transparent;
+  --btn_cr_white-outline       : #FFFFFF;
+  --btn_br_white-outline       : #FFFFFF;
+
+  --btn_bg_white-outline--hover: #242424;
+  --btn_cr_white-outline--hover: #FFFFFF;
+  --btn_br_white-outline--hover: #242424;
+
+  --btn_bg_white-outline--active: #2E2E2E;
+  --btn_cr_white-outline--active: #FFFFFF;
+  --btn_br_white-outline--active: #2E2E2E;
+  /* Ghost */
+  --btn_bg_white-ghost          : transparent;
+  --btn_cr_white-ghost          : #FFFFFF;
+  --btn_br_white-ghost          : transparent;
+
+  --btn_bg_white-ghost--hover: #242424;
+  --btn_cr_white-ghost--hover: #FFFFFF;
+  --btn_br_white-ghost--hover: #242424;
+
+  --btn_bg_white-ghost--active: #2E2E2E;
+  --btn_cr_white-ghost--active: #FFFFFF;
+  --btn_br_white-ghost--active: #2E2E2E;
+  /* Soft */
+  --btn_bg_white-soft         : #202020;
+  --btn_cr_white-soft         : #FFFFFF;
+  --btn_br_white-soft         : #202020;
+
+  --btn_bg_white-soft--hover: #242424;
+  --btn_cr_white-soft--hover: #FFFFFF;
+  --btn_br_white-soft--hover: #242424;
+
+  --btn_bg_white-soft--active: #2E2E2E;
+  --btn_cr_white-soft--active: #FFFFFF;
+  --btn_br_white-soft--active: #2E2E2E;
+}

@@ -1,0 +1,23 @@
+.ReferralCard {
+  box-shadow   : var(--glass-shadow);
+  border-radius: 13px;
+
+  position: relative;
+  overflow: hidden;
+
+  padding   : 16px;
+  box-sizing: border-box;
+  width     : 100%;
+  box-sizing: border-box;
+
+  background-color: #4130a5;
+}
+
+.ReferralCard__badge {
+  background-color: #4130a5;
+  color           : white;
+
+  border-radius: 13px;
+
+  padding: 4px 8px;
+}

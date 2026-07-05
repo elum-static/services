@@ -1,0 +1,14 @@
+.GamesCardAnimation {
+  width   : 100%;
+  overflow: visible;
+
+}
+
+.GamesCardAnimation__group {
+  will-change: transform;
+}
+
+
+/* .GamesCardAnimation._active .GamesCardAnimation__group {
+  transition-play-state: paused
+} */

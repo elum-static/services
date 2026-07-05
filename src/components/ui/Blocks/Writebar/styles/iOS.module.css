@@ -1,0 +1,11 @@
+.WriteBar {
+  --writebar__gap    : 10px;
+  --writebar__padding: 10px;
+}
+
+.WriteBar__separator {
+  position: absolute !important;
+  left    : 0;
+  right   : 0;
+  top     : 0;
+}

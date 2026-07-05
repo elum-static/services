@@ -1,0 +1,9 @@
+.Context {
+  position   : relative;
+  overflow   : hidden;
+  font-weight: inherit;
+}
+
+.Context--full {
+  width: 100%;
+}

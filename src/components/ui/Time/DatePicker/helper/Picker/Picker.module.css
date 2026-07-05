@@ -1,0 +1,160 @@
+.Picker {
+  position: relative;
+  width   : 100%;
+  height  : 100%;
+  overflow: hidden;
+}
+
+/* .Picker__days::after,
+.Picker__days::before,
+.Picker__months::after,
+.Picker__months::before,
+.Picker__years::after,
+.Picker__years::before {
+  content            : " ";
+  display            : block;
+  width              : 100%;
+  min-height         : calc((var(--font_height--large) + 8px) * 3);
+} */
+
+.Picker__days {
+  width          : 100%;
+  height         : 0;
+  transform-style: preserve-3d;
+
+
+  position: absolute;
+  top     : 50%;
+  z-index : 2;
+}
+
+
+.Picker__input {
+  position      : absolute;
+  left          : 0;
+  right         : 0;
+  top           : calc(50% - (var(--font_height--large) + 12px) / 2);
+  height        : var(--font_height--large);
+  padding       : 6px 0px;
+  overflow      : hidden;
+  pointer-events: none;
+  z-index       : 5;
+}
+
+.Picker__input__in {
+  width          : 100%;
+  height         : 0;
+  transform-style: preserve-3d;
+
+  pointer-events: none;
+
+  position: absolute;
+  top     : 50%;
+  z-index : 2;
+}
+
+.Picker__input__item {
+  position  : absolute;
+  display   : block;
+  width     : 100%;
+  text-align: center;
+
+  color      : var(--color_accent--text);
+  font-weight: 600;
+  font-size  : var(--font_size--x-large);
+  line-height: var(--font_height--x-large);
+  padding    : 4px 0px;
+
+}
+
+.Picker__day {
+  position  : absolute;
+  display   : block;
+  width     : 100%;
+  text-align: center;
+
+  font-weight: 400;
+  font-size  : var(--font_size--large);
+  line-height: var(--font_height--large);
+  color      : var(--text_secondary);
+  padding    : 4px 0px;
+
+  cursor: pointer;
+
+}
+
+.Picker--anim .Picker__day,
+.Picker--anim .Picker__days,
+.Picker--anim .Picker__input__in,
+.Picker--animTouch .Picker__day,
+.Picker--animTouch .Picker__day--selected {
+  transition   : 0.2s ease-in-out;
+  /* transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); */
+}
+
+.Picker--hidden {
+  display       : block;
+  opacity       : 0;
+  pointer-events: none;
+}
+
+.Picker__content {
+  position: relative;
+  width   : 100%;
+  height  : 100%;
+  overflow: hidden;
+}
+
+.Picker__fakeScroll {
+  position  : relative;
+  overflow-y: auto;
+  overflow-x: hidden;
+  width     : 100%;
+  height    : 100%;
+  height    : calc((var(--font_height--large) + 8px) * 7);
+  z-index   : 4;
+}
+
+.Picker__content {
+  position: relative;
+  height  : 100%;
+  width   : 100%;
+
+  display: block;
+}
+
+.Picker__fakeScroll_content {
+  display : block;
+  width   : 100%;
+  position: relative;
+}
+
+.Picker__day--selected {
+  font-weight: 600;
+  font-size  : var(--font_size--x-large);
+  line-height: var(--font_height--x-large);
+}
+
+.Picker__button_up {
+  position: absolute;
+  left    : 0;
+  right   : 0;
+  top     : 0;
+
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+  z-index        : 5;
+}
+
+.Picker__button_down {
+  position: absolute;
+  left    : 0;
+  right   : 0;
+  bottom  : 0;
+
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+  z-index        : 5;
+}

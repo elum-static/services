@@ -1,0 +1,48 @@
+.ScrollOverflowItem {
+  position        : relative;
+  box-sizing      : border-box;
+  /* height       : 100%; */
+  /* overflow     : hidden; */
+}
+
+.ScrollOverflowItem__root {
+  position         : relative;
+  box-sizing       : border-box;
+  /* overflow      : hidden; */
+  z-index          : 1;
+  display          : flex;
+  flex-direction   : column;
+  /* display       : flex;
+  flex-direction   : column-reverse; */
+}
+
+/* ._InfiniteScroll--reverse .ScrollOverflowItem__root {
+  display       : flex;
+  flex-direction: column-reverse;
+} */
+
+.ScrollOverflowItem__top {
+  position: absolute;
+  top     : -100%;
+  height  : 100%;
+  z-index : -1;
+}
+
+.ScrollOverflowItem:first-child .ScrollOverflowItem__top {
+  top: 0;
+}
+
+/* Поменяв top и bottom можно изменить как будет отображатся элемент */
+.ScrollOverflowItem__bottom {
+  position      : absolute;
+  left          : 0;
+  right         : 0;
+  top           : -25%;
+  bottom        : -25%;
+  content       : " ";
+  pointer-events: none;
+}
+
+.ScrollOverflowItem:last-child .ScrollOverflowItem__bottom {
+  bottom: 0;
+}

@@ -1,0 +1,15 @@
+.Group {
+  position: relative;
+  width   : 100%;
+
+  display              : grid;
+  grid-template-columns: 1fr auto 1fr;
+
+  gap: 10px;
+
+  z-index: 1;
+}
+
+.Group--onlyContent {
+  grid-template-columns: auto;
+}

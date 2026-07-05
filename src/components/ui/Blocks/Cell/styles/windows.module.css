@@ -1,0 +1,43 @@
+.Cell {
+  padding-left: 12px;
+}
+
+.Cell--selected>.Cell__background {
+  border-radius: 4px;
+  overflow     : hidden;
+}
+
+.Cell__before {
+  padding: 14px 12px 14px 0px;
+}
+
+.Cell__before::after {
+  content         : " ";
+  position        : absolute;
+  left            : -12px;
+  top             : 14px;
+  bottom          : 14px;
+  width           : 3px;
+  background-color: transparent;
+  border-radius   : 4px;
+  transition      : 0.3s;
+}
+
+.Cell--selected>.Cell__content>.Cell__before::after {
+  background-color: var(--accent_color);
+}
+
+.Cell__container {
+  padding   : 14px 12px 14px 0px;
+  min-height: 44px;
+  box-sizing: border-box;
+}
+
+
+.Cell__title {}
+
+.Cell__subtitle {}
+
+.Cell__after {
+  padding-left: 12px;
+}

@@ -1,0 +1,15 @@
+.Container {
+  display        : flex;
+  justify-content: center;
+  align-items    : flex-end;
+  width          : 100%;
+  gap            : var(--writebar__gap);
+
+  /* border-top      : solid 1px var(--separator_primary); */
+  /* background-color: var(--background_secondary); */
+  z-index   : 10;
+  padding   : 0px;
+  box-sizing: border-box;
+
+  /* padding: 0px var(--writebar__padding) 0px var(--writebar__padding); */
+}

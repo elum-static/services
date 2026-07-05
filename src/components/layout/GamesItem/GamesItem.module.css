@@ -1,0 +1,149 @@
+.GamesItem {
+  padding      : 16px;
+  border-radius: 14px;
+
+  width: 100%;
+
+  background-size    : cover;
+  background-repeat  : no-repeat;
+  background-position: 50%;
+  background-color   : var(--background_primary);
+
+
+  box-shadow: var(--glass-shadow);
+
+  color: white;
+
+  display       : flex;
+  flex-direction: column;
+}
+
+.GamesItem__title {
+  font-size     : 18px;
+  line-height   : normal;
+  /* line-height: 1.5; */
+  font-weight   : 500;
+  z-index       : 2;
+
+  overflow     : hidden;
+  text-overflow: ellipsis;
+}
+
+.GamesItem__subtitle {
+  font-size  : 12px;
+  line-height: normal;
+  font-weight: 500;
+
+  white-space: pre-line;
+
+  opacity      : 0.75;
+  z-index      : 2;
+  overflow     : hidden;
+  text-overflow: ellipsis;
+}
+
+.GamesItem__type {
+  font-size  : 10px;
+  font-weight: 600;
+
+  margin-top: 12px;
+  padding   : 6px 12px;
+
+  background-color: white;
+
+  color: black;
+
+  border-radius: 999px;
+
+  width : fit-content;
+  height: fit-content;
+
+
+  text-transform: uppercase;
+  z-index       : 2;
+}
+
+
+.GamesItem__layout-1 .GamesItem__subtitle {
+  max-width: max(50%, 180px);
+}
+
+.GamesItem__layout-2,
+.GamesItem__layout-3 {
+  min-height: 200px;
+}
+
+
+.GamesItem__layout-2 .GamesItem__type {
+  margin-top: auto;
+}
+
+.GamesItem__layout-3 {
+  display              : grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows   : repeat(2, 1fr);
+}
+
+.GamesItem__layout-3 .GamesItem__title {}
+
+.GamesItem__layout-3 .GamesItem__subtitle {
+  grid-column      : span 2 / span 2;
+  grid-column-start: 1;
+  grid-row-start   : 2;
+
+  margin-top: auto;
+}
+
+.GamesItem__layout-3 .GamesItem__type {
+  grid-column-start: 2;
+  grid-row-start   : 1;
+
+  margin-left: auto;
+  margin-top : unset;
+}
+
+
+.GamesItem__layout-4,
+.GamesItem__layout-5 {
+  min-height: 180px;
+}
+
+.GamesItem__layout-4 {
+  width: 40%;
+}
+
+.GamesItem__layout-5 {
+  width: 60%;
+}
+
+.GamesItem__backgroundPosition-start .GamesItem__image img {
+  object-position: 0%;
+}
+
+.GamesItem__backgroundPosition-center .GamesItem__image img {
+  object-position: 50%;
+}
+
+.GamesItem__backgroundPosition-end .GamesItem__image img {
+  object-position: 100%;
+}
+
+
+.GamesItem__image {
+  position: absolute;
+  left    : 0;
+  top     : 0;
+  right   : 0;
+  bottom  : 0;
+}
+
+.GamesItem__icon {
+  position      : absolute;
+  width         : 100%;
+  height        : 100%;
+  left          : 0;
+  right         : 0;
+  top           : 0;
+  bottom        : 0;
+  pointer-events: none;
+}

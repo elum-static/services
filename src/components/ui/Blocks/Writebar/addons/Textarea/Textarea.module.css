@@ -1,0 +1,35 @@
+.Field {
+  position        : relative;
+  z-index         : 3;
+  /* margin-top   : var(--writebar__padding);
+  margin-bottom   : var(--writebar__padding); */
+  border-radius   : 20px;
+  padding         : 0px;
+
+
+
+  background-color: color-mix(in srgb, var(--background_textarea) 85%, transparent);
+
+  border: solid 0.5px var(--separator_primary);
+
+  backdrop-filter: blur(3px);
+
+
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1),
+    inset 0 0 20px rgba(255, 255, 255, 0.05);
+
+  overflow: hidden;
+}
+
+.Field>._Field__in {
+  gap: 0px;
+}
+
+.Textarea {
+  background: transparent;
+  border    : unset;
+  box-shadow: unset;
+
+  backdrop-filter: unset;
+}

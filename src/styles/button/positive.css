@@ -1,0 +1,50 @@
+:root {
+  /* Filled */
+  --btn_bg_positive-filled: #22C55E;
+  --btn_cr_positive-filled: #FFFFFF;
+  --btn_br_positive-filled: #22C55E;
+
+  --btn_bg_positive-filled--hover: #21BD5A;
+  --btn_cr_positive-filled--hover: #FFFFFF;
+  --btn_br_positive-filled--hover: #21BD5A;
+
+  --btn_bg_positive-filled--active: #21BD5A;
+  --btn_cr_positive-filled--active: #FFFFFF;
+  --btn_br_positive-filled--active: #21BD5A;
+  /* Outline */
+  --btn_bg_positive-outline       : #1A1A1A;
+  --btn_cr_positive-outline       : #22C55E;
+  --btn_br_positive-outline       : #22C55E;
+
+  --btn_bg_positive-outline--hover: #21BD5A;
+  --btn_cr_positive-outline--hover: #FFFFFF;
+  --btn_br_positive-outline--hover: #21BD5A;
+
+  --btn_bg_positive-outline--active: #20B456;
+  --btn_cr_positive-outline--active: #FFFFFF;
+  --btn_br_positive-outline--active: #20B456;
+  /* Ghost */
+  --btn_bg_positive-ghost          : transparent;
+  --btn_cr_positive-ghost          : #22C55E;
+  --btn_br_positive-ghost          : transparent;
+
+  --btn_bg_positive-ghost--hover: #242424;
+  --btn_cr_positive-ghost--hover: #21BD5A;
+  --btn_br_positive-ghost--hover: #242424;
+
+  --btn_bg_positive-ghost--active: #2E2E2E;
+  --btn_cr_positive-ghost--active: #22C55E;
+  --btn_br_positive-ghost--active: #2E2E2E;
+  /* Soft */
+  --btn_bg_positive-soft         : #5ED88B;
+  --btn_cr_positive-soft         : #FFFFFF;
+  --btn_br_positive-soft         : #5ED88B;
+
+  --btn_bg_positive-soft--hover: #52D783;
+  --btn_cr_positive-soft--hover: #FFFFFF;
+  --btn_br_positive-soft--hover: #52D783;
+
+  --btn_bg_positive-soft--active: #46D67B;
+  --btn_cr_positive-soft--active: #FFFFFF;
+  --btn_br_positive-soft--active: #46D67B;
+}

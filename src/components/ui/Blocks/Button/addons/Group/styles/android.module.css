@@ -1,0 +1,12 @@
+/* .Group {
+  padding: 10px;
+  gap    : 10px;
+} */
+
+.Group--gap {
+  gap: 10px;
+}
+
+.Group--padding {
+  padding: 10px;
+}

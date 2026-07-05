@@ -1,0 +1,66 @@
+.Lottie {
+  display   : block;
+  position  : relative;
+  transition: 0.3s;
+}
+
+.Lottie__fallback {
+  position  : absolute;
+  width     : 100%;
+  height    : 100%;
+  left      : 0;
+  right     : 0;
+  top       : 0;
+  bottom    : 0;
+  transition: 0.3s;
+
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+}
+
+.Lottie__animation--end {
+  animation: _LottieEnd 0.35s cubic-bezier(0.215, 0.610, 0.355, 1);
+  display  : block;
+  position : relative;
+}
+
+
+@keyframes _LottieEnd {
+  0% {
+    transform: scale(0.9);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.Lottie__element {
+  display         : block;
+  height          : 100%;
+  width           : 100%;
+  min-height      : 100%;
+  transition      : 0.3s;
+  transition-delay: 0.1s
+}
+
+.Lottie__hidden .Lottie__element {
+  overflow : hidden;
+  opacity  : 0;
+  transform: scale(0.8);
+}
+
+.Lottie--visible .Lottie__element {
+  opacity  : 1;
+  transform: scale(1);
+}
+
+.Lottie--visible .Lottie__fallback {
+  opacity  : 0;
+  transform: scale(0.8);
+}

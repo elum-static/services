@@ -1,0 +1,28 @@
+.Button {
+  position: relative;
+  width   : 100%;
+
+  appearance                 : none;
+  border                     : none;
+  outline                    : none;
+  background-color           : transparent;
+  -webkit-tap-highlight-color: transparent;
+
+  color: var(--text_secondary);
+
+  transition: all 0.1s ease-in-out;
+  transform : scale(1.0001);
+
+  flex: 1;
+
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+
+  overflow: hidden;
+  z-index : 2;
+}
+
+.Button--selected {
+  color: var(--color_accent);
+}

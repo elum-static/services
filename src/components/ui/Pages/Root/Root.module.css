@@ -1,0 +1,123 @@
+.Root {
+  position        : absolute;
+  overflow        : hidden;
+  width           : 100%;
+  height          : 100%;
+  background      : var(--background_primary);
+  background-color: var(--fixed_color_black);
+  display         : flex;
+  flex-direction  : column;
+  top             : 0;
+  left            : 0;
+  right           : 0;
+  min-height      : -webkit-fill-available;
+}
+
+.Root--active,
+.Root--back {
+  display: block;
+  width  : 100%;
+  height : 100%;
+}
+
+.Root__header {
+  position: fixed;
+  left    : 0;
+  right   : 0;
+  bottom  : 0;
+  z-index : 1;
+}
+
+.Root__hidden_elements {
+  position   : absolute;
+  left       : 0;
+  right      : 0;
+  top        : 0;
+  bottom     : 0;
+  /* overflow: hidden; */
+}
+
+.Root__Container,
+.Root--to-next::before,
+.Root--to-back::before {
+  position  : absolute;
+  left      : 0;
+  right     : 0;
+  top       : 0;
+  bottom    : 0;
+  background: var(--background_primary);
+  overflow  : hidden;
+}
+
+.Root--to-next::before,
+.Root--to-back::before {
+  content         : " ";
+  opacity         : 0;
+  z-index         : 2;
+  pointer-events  : none;
+  background-color: var(--background_layout_shadow);
+}
+
+.Root--index-1 {
+  z-index: 1;
+}
+
+.Root--index-2 {
+  z-index: 2;
+}
+
+.Root--to-next>.Root--first {
+  animation: _iOSRootNextAnimation .4s cubic-bezier(0.36, 0.66, 0.04, 1) forwards;
+}
+
+.Root--to-next::before {
+  animation: _upShadow .41s ease forwards;
+}
+
+.Root--to-back>.Root--last {
+  animation: _iOSRootBackAnimation .41s cubic-bezier(0.36, 0.66, 0.04, 1) forwards;
+}
+
+.Root--to-back::before {
+  animation: _downShadow .41s ease forwards;
+}
+
+@keyframes _iOSRootNextAnimation {
+  from {
+    transform: translateY(100%)
+  }
+
+  to {
+    transform: translateY(0%)
+  }
+}
+
+@keyframes _iOSRootBackAnimation {
+  from {
+    transform: translateY(0%)
+  }
+
+  to {
+    transform: translateY(100%)
+  }
+}
+
+@keyframes _upShadow {
+  from {
+    opacity: 0
+  }
+
+  to {
+    opacity: 1
+  }
+}
+
+@keyframes _downShadow {
+  from {
+    opacity: 1
+  }
+
+  to {
+    opacity: 0
+  }
+}

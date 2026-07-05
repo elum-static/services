@@ -1,0 +1,195 @@
+.Story {
+  position      : relative;
+  width         : 100%;
+  height        : 100%;
+  /* max-height : 100%; */
+
+
+  overflow: hidden;
+
+  display       : flex;
+  flex-direction: column;
+  align-items   : center;
+}
+
+.Story__in {
+  position   : relative;
+  width      : 100%;
+  /* height  : auto; */
+  height     : 100%;
+
+  overflow: hidden;
+
+
+  background-color: var(--fixed_color_gray);
+  color           : var(--fixed_color_white);
+
+  border-radius: 12px;
+  overflow     : hidden;
+
+  display       : flex;
+  flex-direction: column;
+}
+
+.Story__header {
+  position: absolute;
+  left    : 0;
+  right   : 0;
+  top     : 0;
+  height  : auto;
+  width   : 100%;
+
+  display        : flex;
+  flex-direction : column;
+  justify-content: center;
+  align-items    : center;
+  padding        : 12px;
+  padding-top    : var(--content-safe-area-inset-top, 12px);
+  box-sizing     : border-box;
+  gap            : 4px;
+  transform      : translateZ(0px);
+
+  z-index: 5;
+}
+
+.Story__separator {
+  padding: 0px;
+
+  z-index: 5;
+}
+
+.Story__footer {
+  display : block;
+  position: relative;
+  width   : 100%;
+  height  : auto;
+
+  transition: 0.3s;
+}
+
+.Story__rewind {
+  padding-top: 10px;
+
+  color: white;
+
+  opacity  : 0;
+  transform: scale(0.6) translateY(-15px);
+
+  transition: 0.3s;
+}
+
+.Story--rewind .Story__rewind {
+  opacity  : 1;
+  transform: scale(1);
+}
+
+.Story--rewind .Story__footer {
+  opacity  : 0;
+  transform: scale(0.6) translateY(15px);
+}
+
+.Story__mute {
+  position  : absolute;
+  right     : 0;
+  bottom    : 0;
+  padding   : 6px;
+  z-index   : 10;
+  box-sizing: border-box;
+}
+
+.Story__mute_button {
+  backdrop-filter : blur(8px);
+  background-color: var(--fixed_color_gray) !important;
+  border          : solid 1px var(--fixed_color_gray) !important;
+  color           : var(--fixed_color_white) !important;
+}
+
+
+.Story__mute_button--icon1 {
+  opacity  : 1;
+  transform: scale(1);
+
+  transition: 0.3s;
+}
+
+
+.Story__mute_button--icon2 {
+  position : absolute;
+  left     : 0;
+  right    : 0;
+  top      : 0;
+  bottom   : 0;
+  opacity  : 0;
+  transform: scale(0.6);
+
+  transition: 0.3s;
+}
+
+.Story--muted .Story__mute_button--icon2 {
+  opacity  : 1;
+  transform: scale(1);
+}
+
+.Story--muted .Story__mute_button--icon1 {
+  opacity  : 0;
+  transform: scale(0.6);
+}
+
+.Story__counter {
+  position       : absolute;
+  left           : 0;
+  bottom         : 0;
+  margin         : 10px;
+  backdrop-filter: blur(8px);
+
+  border-radius: 12px;
+  overflow     : hidden;
+  padding      : 4px 8px;
+
+  z-index: 30;
+}
+
+.Story__counter::before {
+  content : " ";
+  position: absolute;
+  left    : 0;
+  right   : 0;
+  top     : 0;
+  bottom  : 0;
+
+  background-color: var(--fixed_color_white);
+  opacity         : 0.2;
+}
+
+.Story__counter::after {
+  content : " ";
+  position: absolute;
+  left    : 0;
+  right   : 0;
+  top     : 0;
+  bottom  : 0;
+
+  background-color: var(--fixed_color_black);
+  opacity         : 0.2;
+}
+
+.Story__counter_in {
+  position: relative;
+  z-index : 1;
+
+  color: var(--fixed_color_white);
+}
+
+.Story__FlexRation {
+  height: 100%;
+}
+
+._Stories__type--gallery .Story__FlexRation {
+  width     : 100%;
+  min-height: min-content;
+}
+
+.Story__FlexRation .Story__in {
+  border-radius   : 0px;
+  background-color: transparent;
+}

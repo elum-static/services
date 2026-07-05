@@ -1,0 +1,73 @@
+.ColorScheme {
+  position     : relative;
+  width        : 28px;
+  height       : 28px;
+  border-radius: 28px;
+  overflow     : hidden;
+  border       : solid 1px var(--separator_primary);
+  box-sizing   : border-box;
+}
+
+.ColorScheme::after {
+  content         : "";
+  position        : absolute;
+  left            : 0;
+  right           : 0;
+  top             : 0;
+  bottom          : 0;
+  margin          : 9px;
+  background-color: var(--scheme_light);
+  border-radius   : inherit;
+}
+
+/* type--system */
+.ColorScheme__type--system {
+  background-color: var(--scheme_light)
+}
+
+.ColorScheme__type--system::before {
+  content         : "";
+  position        : absolute;
+  left            : 0;
+  right           : 0;
+  top             : 0;
+  bottom          : 0;
+  background-color: var(--scheme_dark);
+  transform       : rotate(45deg) translateY(14px);
+}
+
+/* type--dark */
+.ColorScheme__type--dark {
+  background-color: var(--scheme_dark);
+}
+
+/* type--light */
+.ColorScheme__type--light {
+  background-color: var(--scheme_light);
+
+}
+
+/* type--blue */
+.ColorScheme__type--blue {
+  background-color: var(--scheme_blue);
+}
+
+/* type--ebony */
+.ColorScheme__type--ebony {
+  background-color: var(--scheme_ebony);
+}
+
+/* type--forest-deep */
+.ColorScheme__type--forest-deep {
+  background-color: var(--scheme_forest-deep);
+}
+
+/* type--royal-purple */
+.ColorScheme__type--royal-purple {
+  background-color: var(--scheme_royal-purple);
+}
+
+/* type--cream */
+.ColorScheme__type--cream {
+  background-color: var(--scheme_cream);
+}

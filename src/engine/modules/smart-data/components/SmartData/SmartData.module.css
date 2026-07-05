@@ -1,0 +1,20 @@
+.Loader__content--hidden {
+  visibility: hidden;
+  display: none;
+}
+
+.Loader__item {
+  position: relative;
+}
+
+.Loader__item--skeleton {
+  position: relative;
+}
+
+.Loader__item--content {
+  position: relative;
+}
+
+.Loader__item--error {
+  position: relative;
+}

@@ -1,0 +1,12 @@
+.InputMultiplier {
+  padding         : 2px;
+  background-color: var(--background_secondary);
+
+  border-radius: 13px;
+
+  gap: 8px;
+}
+
+.InputMultiplier__button {
+  aspect-ratio: 1 / 1;
+}

@@ -1,0 +1,18 @@
+.Link::after {
+  transition   : 0.1s;
+  left         : -2px;
+  right        : -2px;
+  top          : 0;
+  bottom       : 0;
+  border-radius: 6px;
+}
+
+.Link._hover::after {
+  background-color: var(--comp_link_color);
+  opacity         : 0.2;
+}
+
+.Link._active::after {
+  background-color: var(--comp_link_color);
+  opacity         : 0.4;
+}

@@ -1,0 +1,64 @@
+.Progress {
+  position  : relative;
+  overflow  : hidden;
+  width     : 100%;
+  min-height: 4px;
+  height    : 4px;
+
+  box-sizing: border-box;
+}
+
+/* size */
+.Progress__size--default {
+  min-height: 4px;
+  height    : 4px;
+}
+
+.Progress__size--small {
+  min-height: 2px;
+  height    : 2px;
+}
+
+.Progress--border {
+  border-radius: 12px;
+}
+
+.Progress__in {
+  position: relative;
+  height  : 100%;
+  display : block;
+
+  width     : 100%;
+  min-width : 100%;
+  transition: none;
+  transform : translateX(var(--progress-value));
+}
+
+.Progress--animation .Progress__in {
+  transition: var(--progress-duration) linear;
+}
+
+/* backgrounds */
+.Progress__backgroundColor--black {
+  background-color: var(--fixed_color_black);
+}
+
+.Progress__backgroundColor--black .Progress__in {
+  background-color: var(--fixed_color_white);
+}
+
+.Progress__backgroundColor--primary {
+  background-color: var(--background_primary);
+}
+
+.Progress__backgroundColor--primary .Progress__in {
+  background-color: var(--text_primary);
+}
+
+.Progress__backgroundColor--transparent {
+  background-color: transparent;
+}
+
+.Progress__backgroundColor--transparent .Progress__in {
+  background-color: var(--text_primary);
+}

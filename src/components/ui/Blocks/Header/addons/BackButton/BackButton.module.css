@@ -1,0 +1,60 @@
+.BackButton {
+  position: relative;
+  color   : var(--text_primary);
+
+  transition: 0.3s;
+
+  height   : 44px;
+  min-width: 44px;
+  width    : fit-content;
+}
+
+
+.BackButton--hidden {
+  transform: scale(0.8);
+  opacity  : 0;
+}
+
+
+.BackButton::after {
+  content : " ";
+  position: absolute;
+  left    : 0;
+  right   : 0;
+  top     : 0;
+  bottom  : 0;
+
+  background-color: var(--background_primary);
+  opacity         : 0.85;
+
+  border-radius: inherit;
+  z-index      : -1;
+}
+
+.BackButton {
+  position: relative;
+
+  box-sizing: border-box;
+  border    : solid 0.5px var(--separator_primary) !important;
+
+
+  border-radius: 999px;
+
+  padding: 3px;
+
+  max-width      : 100%;
+  /* overflow    : hidden; */
+  backdrop-filter: blur(3px);
+
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1),
+    inset 0 0 20px rgba(255, 255, 255, 0.05);
+}
+
+.BackButton_content {
+  z-index: 1;
+
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+}

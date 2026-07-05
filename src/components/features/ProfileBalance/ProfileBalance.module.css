@@ -1,0 +1,22 @@
+.ProfileBalance {
+  width     : 100%;
+  box-sizing: border-box;
+}
+
+.ProfileBalance__plug {
+  border-radius: 13px;
+  box-shadow   : var(--glass-shadow);
+
+  width: 100%;
+
+  background-color: var(--background_primary);
+}
+
+.ProfileBalance__balance {
+  font-size      : 32px;
+  line-height    : normal;
+  font-weight    : 600;
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+}

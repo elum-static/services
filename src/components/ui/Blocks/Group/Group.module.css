@@ -1,0 +1,62 @@
+.Group {
+  position  : relative;
+  padding   : 16px;
+  box-sizing: border-box;
+  width     : 100%;
+
+  border-radius: 14px;
+}
+
+.Group__in {
+  position: relative;
+
+  overflow: hidden;
+}
+
+
+/* background */
+.Group__background--primary .Group__in {
+  background-color: var(--background_primary);
+}
+
+.Group__background--transparent .Group__in {
+  background-color: transparent;
+}
+
+.Group__background--secondary .Group__in {
+  background-color: var(--background_secondary);
+}
+
+.Group_container {
+  position: relative;
+}
+
+
+.Group__header {
+  position: relative;
+  display : block;
+
+  box-sizing: border-box;
+}
+
+.Group__footer {
+  position: relative;
+  display : block;
+
+  box-sizing: border-box;
+}
+
+.Group--scroll {
+  overflow: hidden;
+  height  : 100%;
+}
+
+.Group--scroll .Group_container {
+  overflow: hidden;
+  height  : 100%;
+}
+
+.Group--scroll .Group__in {
+  overflow: auto;
+  height  : 100%;
+}

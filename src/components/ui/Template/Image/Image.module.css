@@ -1,0 +1,95 @@
+.Image {
+  position: relative;
+  display : block;
+  overflow: hidden;
+  width   : 100%;
+  height  : 100%;
+}
+
+
+.Image__element,
+.Image__element__stub {
+  max-width     : 100%;
+  width         : 100%;
+  height        : 100%;
+  display       : block;
+  pointer-events: none;
+}
+
+.Image__fallback {
+  position: absolute;
+  left    : 0;
+  right   : 0;
+  top     : 0;
+  bottom  : 0;
+
+  display        : flex;
+  align-items    : center;
+  justify-content: center;
+  width          : 100%;
+  height         : 100%;
+  font-size      : calc(var(--image_size) / 2.666);
+  line-height    : calc(var(--image_size) / 2.666 + 4px);
+  z-index        : 1;
+}
+
+.Image--error .Image__element {
+  visibility: hidden;
+}
+
+/* fit */
+.Image__fit--contain .Image__element,
+.Image__fit--contain .Image__element__stub {
+  object-fit: contain;
+}
+
+.Image__fit--cover .Image__element,
+.Image__fit--cover .Image__element__stub {
+  object-fit: cover
+}
+
+.Image__fit--fill .Image__element,
+.Image__fit--fill .Image__element__stub {
+  object-fit: fill;
+}
+
+/* background */
+.Image__background--primary {
+  background-color: var(--background_primary);
+}
+
+.Image__background--secondary {
+  background-color: var(--background_secondary);
+}
+
+.Image__background--transparent {
+  background-color: transparent;
+}
+
+.Image__element__stub {
+  z-index : 2;
+  position: absolute;
+  left    : 0;
+  right   : 0;
+  top     : 0;
+  bottom  : 0;
+}
+
+
+.Image--loaded .Image__element {
+  z-index: 3;
+}
+
+.Image__element--animation {
+  animation: _ImageAnimation 0.3s ease-in-out;
+}
+
+@keyframes _ImageAnimation {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,11 @@
+.BetPlayers {
+  padding: 10px;
+}
+
+.BetPlayers__in {
+  border-radius   : 13px;
+  width           : 100%;
+  background-color: var(--background_secondary);
+
+  box-shadow: var(--glass-shadow);
+}

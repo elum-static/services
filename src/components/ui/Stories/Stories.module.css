@@ -1,0 +1,162 @@
+.Stories {
+  position: relative;
+  width   : 100%;
+  height  : 100%;
+
+  box-sizing: border-box;
+
+  display: flex;
+}
+
+.Stories__type--gallery .Stories {
+  min-height: min-content;
+}
+
+.Stories__container {
+  position            : relative;
+  width               : 100%;
+  height              : 100%;
+  /* overflow         : hidden; */
+  display             : flex;
+  flex-direction      : column;
+}
+
+.Stories__type--gallery {
+  min-height: min-content;
+}
+
+.Stories__type--stories {
+  overflow: hidden;
+}
+
+.Stories__fallback {
+  position : relative;
+  width    : 100%;
+  min-width: 100%;
+  height   : 100%;
+}
+
+.Stories__to--next {
+  justify-content: flex-start;
+}
+
+.Stories__to--back {
+  justify-content: flex-end;
+}
+
+
+.Stories--anim,
+.Stories--anim .Stories__Item {
+  transition-timing-function: ease-in-out;
+  transition-timing-function: cubic-bezier(.22, .12, .25, 1);
+  transition-duration       : 0.3s;
+}
+
+/* Item */
+.Stories__Item {
+  width    : 100%;
+  min-width: 100%;
+  height   : 100%;
+
+  box-sizing: border-box;
+
+  /* overflow: hidden; */
+}
+
+.Stories__Item__position--left {
+  transform: scale(calc(0.9 - (var(--stories_transition_ratio)/1) * -0.1)) translateX(calc((var(--stories_transition_ratio)/1) * -25px));
+}
+
+.Stories__Item__position--center {
+  transform: scale(calc(1 - (var(--stories_transition_ratio)/1) * 0.1));
+}
+
+.Stories__Item__position--right {
+  transform: scale(calc(0.9 - (var(--stories_transition_ratio)/1) * -0.1)) translateX(calc((var(--stories_transition_ratio)/1) * 25px));
+}
+
+
+._skipAnimations .Stories__Item__position--left {
+  transform: scale(0.9) translateX(-50px);
+}
+
+._skipAnimations .Stories__Item__position--center {
+  transform: scale(1);
+}
+
+._skipAnimations .Stories__Item__position--right {
+  transform: scale(0.9) translateX(50px);
+}
+
+.Stories__Item__position--hidden--left {
+  transform: scale(0.8) translateX(-100px);
+}
+
+.Stories__Item__position--hidden--right {
+  transform: scale(0.8) translateX(100px);
+}
+
+.Stories__button_back {
+  position  : absolute;
+  left      : 0;
+  top       : 0;
+  bottom    : 0;
+  padding   : 10px;
+  z-index   : 222;
+  transition: 0.3s;
+}
+
+.Stories__button_next {
+  position  : absolute;
+  right     : 0;
+  top       : 0;
+  bottom    : 0;
+  padding   : 10px;
+  z-index   : 10;
+  transition: 0.3s;
+}
+
+.Stories__button_control {
+  pointer-events: none;
+}
+
+.Stories--touch .Stories__button_back,
+.Stories--touch .Stories__button_next {
+  pointer-events: none;
+}
+
+.Stories__button_back,
+.Stories__button_next {
+  opacity: 0;
+}
+
+.Stories__button_back._hover,
+.Stories__button_next._hover {
+  opacity: 1;
+}
+
+.Stories__button_back._active,
+.Stories__button_next._active {
+  opacity: 1;
+}
+
+/* type */
+
+.Stories__type--gallery .Stories__Item__position--left {
+  transform: translateX(calc((var(--stories_transition_ratio)/1)));
+}
+
+/* .Stories__type--gallery .Stories__Item__position--center {
+  transform: scale(calc(1 - (var(--stories_transition_ratio)/1) * 0.1));
+} */
+
+.Stories__type--gallery .Stories__Item__position--right {
+  transform: translateX(calc((var(--stories_transition_ratio)/1)));
+}
+
+.Stories__counter {
+  gap    : 4px;
+  padding: 10px;
+}
+
+.Stories__counter_item {}

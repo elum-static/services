@@ -1,0 +1,12 @@
+.Button {
+  border-radius: 0px !important;
+}
+
+
+/* .Button__safeBottom {
+  padding-bottom: calc(var(--safe-area-inset-bottom) + 15px)
+} */
+
+.Button {
+  padding: 20px var(--global-padding);
+}

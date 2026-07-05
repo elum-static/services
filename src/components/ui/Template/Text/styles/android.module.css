@@ -1,0 +1,16 @@
+/* Weight */
+.Text__weight--400 {
+  font-weight: 500;
+}
+
+.Text__weight--500 {
+  font-weight: 600;
+}
+
+.Text__weight--600 {
+  font-weight: 700;
+}
+
+.Text__weight--700 {
+  font-weight: 800;
+}

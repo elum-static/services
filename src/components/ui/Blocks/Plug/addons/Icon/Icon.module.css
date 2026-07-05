@@ -1,0 +1,16 @@
+.Icon {
+  position: relative;
+}
+
+.Icon:not(:only-child) {
+  padding-top   : var(--plug_padding);
+  padding-bottom: var(--plug_padding);
+}
+
+.Icon:not(:only-child):first-child {
+  padding-top: 0;
+}
+
+.Icon:not(:only-child):last-child {
+  padding-bottom: 0;
+}

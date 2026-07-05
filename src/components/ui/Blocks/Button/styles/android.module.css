@@ -1,0 +1,79 @@
+/* size */
+/* |-type--button */
+.Button__size--x-small {
+  padding: 5px 12px;
+  gap    : 4px;
+}
+
+.Button__size--small {
+  padding: 7px 12px;
+  gap    : 4px;
+}
+
+.Button__size--medium {
+  padding: 11px 16px;
+  gap    : 6px;
+}
+
+.Button__size--large {
+  padding: 15px 12px;
+  gap    : 8px;
+}
+
+/* |-type--icon */
+.Button__type--icon.Button__size--x-small {
+  padding: 4px;
+  gap    : 4px;
+}
+
+.Button__type--icon.Button__size--small {
+  padding: 4px;
+  gap    : 4px;
+}
+
+.Button__type--icon.Button__size--medium {
+  padding: 6px;
+  gap    : 6px;
+}
+
+.Button__type--icon.Button__size--large {
+  padding: 10px;
+  gap    : 8px;
+}
+
+/* border */
+/* |-size--x-small */
+.Button__size--x-small.Button__border--rounded {
+  border-radius: 6px;
+}
+
+.Button__size--x-small.Button__border--x-rounded {
+  border-radius: 8px;
+}
+
+/* |-size--small */
+.Button__size--small.Button__border--rounded {
+  border-radius: 6px;
+}
+
+.Button__size--small.Button__border--x-rounded {
+  border-radius: 8px;
+}
+
+/* |-size--medium */
+.Button__size--medium.Button__border--rounded {
+  border-radius: 6px;
+}
+
+.Button__size--medium.Button__border--x-rounded {
+  border-radius: 8px;
+}
+
+/* |-size--large */
+.Button__size--large.Button__border--rounded {
+  border-radius: 8px;
+}
+
+.Button__size--large.Button__border--x-rounded {
+  border-radius: 10px;
+}

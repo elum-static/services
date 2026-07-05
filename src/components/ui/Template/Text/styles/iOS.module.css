@@ -1,0 +1,70 @@
+/* Color */
+.Text__color--accent {
+  color: var(--color_accent);
+}
+
+.Text__color--primary {
+  color: var(--text_primary);
+}
+
+.Text__color--secondary {
+  color: var(--text_secondary);
+}
+
+/* Size */
+.Text__size--small {
+  font-size  : var(--font_size--small);
+  line-height: var(--font_height--small);
+}
+
+.Text__size--medium {
+  font-size  : var(--font_size--medium);
+  line-height: var(--font_height--medium);
+}
+
+.Text__size--large {
+  font-size  : var(--font_size--large);
+  line-height: var(--font_height--large);
+}
+
+.Text__size--x-large {
+  font-size  : var(--font_size--x-large);
+  line-height: var(--font_height--x-large);
+}
+
+.Text__size--xx-large {
+  font-size  : var(--font_size--xx-large);
+  line-height: var(--font_height--xx-large);
+}
+
+/* Weight */
+.Text__weight--400 {
+  font-weight: 400;
+}
+
+.Text__weight--500 {
+  font-weight: 500;
+}
+
+.Text__weight--600 {
+  font-weight: 600;
+}
+
+.Text__weight--700 {
+  font-weight: 700;
+}
+
+/* Aligns */
+.Text__align--start {
+  text-align: left;
+  text-align: start
+}
+
+.Text__align--center {
+  text-align: center
+}
+
+.Text__align--end {
+  text-align: right;
+  text-align: end
+}

@@ -1,0 +1,63 @@
+.View {
+  overflow  : hidden;
+  width     : 100%;
+  height    : 100%;
+  background: var(--background_primary);
+
+}
+
+
+
+.View__keyboard .View__Container {
+  /* transform           : translateY(calc(var(--keyboard-safe-area-inset-bottom, 0px) - var(--safe-area-inset-bottom))); */
+  /* padding-bottom         : calc(var(--keyboard-safe-area-inset-bottom, 0px)); */
+
+  transform: translateY(calc(var(--keyboard-safe-area-inset-bottom, 0px) * -1));
+
+  /* max-height          : calc(var(--app-height) + var(--safe-area-inset-bottom)); */
+  /* transition          : all 0.2s ease-out; */
+}
+
+/* .View__Container {
+  border-radius: var(--safe-border-radius, 0px) !important;
+  overflow     : hidden;
+} */
+
+.View__Container {
+  transition: 0.3s;
+}
+
+.View--to-next .View__Container,
+.View--to-back .View__Container {
+  border-radius: var(--global-border-radius, 0px) !important;
+  overflow     : hidden;
+}
+
+.View__Container,
+.View--to-next::before,
+.View--to-back::before {
+  content   : " ";
+  position  : absolute;
+  left      : 0;
+  right     : 0;
+  top       : 0;
+  bottom    : 0;
+  background: var(--background_primary);
+}
+
+.View--to-next::before,
+.View--to-back::before {
+  content         : " ";
+  opacity         : 0;
+  z-index         : 2;
+  pointer-events  : none;
+  background-color: var(--background_layout_shadow);
+}
+
+.View--index-1 {
+  z-index: 1;
+}
+
+.View--index-2 {
+  z-index: 2;
+}

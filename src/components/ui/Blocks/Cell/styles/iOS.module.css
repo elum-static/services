@@ -1,0 +1,132 @@
+.Cell {
+  min-height: 48px;
+}
+
+.Cell--minHeightDisable {
+  min-height: unset;
+}
+
+.Cell__container {
+  box-sizing: border-box;
+}
+
+.Cell__expandable {
+  display: block;
+}
+
+.Cell__content {
+  gap: 2px;
+}
+
+/* Size */
+/* default */
+.Cell__size--default {
+  padding: 0px var(--global-padding);
+}
+
+.Cell__size--default .Cell__container,
+.Cell__size--default .Cell__before {
+  padding: 11px 0px;
+}
+
+.Cell__size--default,
+.Cell__size--default .Cell__container {
+  gap: 10px;
+}
+
+/* small */
+.Cell__size--small {
+  padding   : 0px calc(var(--global-padding) / 1.15);
+  min-height: 36px;
+}
+
+.Cell__size--small .Cell__content {
+  gap: 2px;
+}
+
+.Cell__size--small .Cell__container,
+.Cell__size--small .Cell__before {
+  padding: 6px 0px;
+}
+
+.Cell__size--small,
+.Cell__size--small .Cell__container {
+  gap: 10px;
+}
+
+/* small */
+.Cell__size--small-call {
+  padding   : 0px calc(var(--global-padding) / 1.15);
+  min-height: 36px;
+}
+
+.Cell__size--small-call .Cell__content {
+  gap: 2px;
+}
+
+.Cell__size--small-call .Cell__container,
+.Cell__size--small-call .Cell__before {
+  padding: 0px;
+}
+
+.Cell__size--small-call,
+.Cell__size--small-call .Cell__container {
+  gap: 10px;
+}
+
+/* xxx-small */
+.Cell__size--xxx-small {
+  padding: 0px;
+}
+
+.Cell__size--xxx-small .Cell__content {
+  gap: 2px;
+}
+
+.Cell__size--xxx-small .Cell__container,
+.Cell__size--xxx-small .Cell__before {
+  padding: 2px 0px;
+}
+
+.Cell__size--xxx-small,
+.Cell__size--xxx-small .Cell__container {
+  gap: 10px;
+}
+
+/* xxx-small */
+.Cell__size--xxx-small-chat {
+  padding: 0px;
+}
+
+.Cell__size--xxx-small-chat .Cell__content {
+  gap: 2px;
+}
+
+.Cell__size--xxx-small-chat .Cell__container,
+.Cell__size--xxx-small-chat .Cell__before {
+  padding: 0px;
+}
+
+.Cell__size--xxx-small-chat,
+.Cell__size--xxx-small-chat .Cell__container {
+  gap: 10px;
+}
+
+/* chat */
+.Cell__size--chat {
+  padding: 0px 8px;
+}
+
+.Cell__size--chat .Cell__content {
+  gap: 2px;
+}
+
+.Cell__size--chat .Cell__container,
+.Cell__size--chat .Cell__before {
+  padding: 4px 0px;
+}
+
+.Cell__size--chat,
+.Cell__size--chat .Cell__container {
+  gap: 10px;
+}

@@ -1,0 +1,7 @@
+.Content {
+  position  : relative;
+  width     : 100%;
+  height    : auto;
+  padding   : var(--writebar__padding);
+  box-sizing: border-box;
+}

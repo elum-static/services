@@ -1,0 +1,71 @@
+.SeasonCard {
+  padding      : 16px;
+  border-radius: 14px;
+
+  width: 100%;
+
+  background-size    : cover;
+  background-repeat  : no-repeat;
+  background-position: 50%;
+  background-color   : var(--background_primary);
+
+
+  box-shadow: var(--glass-shadow);
+
+  color: white;
+
+  display       : flex;
+  flex-direction: column;
+}
+
+.SeasonCard__title {
+  font-size     : 18px;
+  line-height   : normal;
+  /* line-height: 1.5; */
+  font-weight   : 500;
+}
+
+.SeasonCard__subtitle {
+  font-size  : 12px;
+  line-height: normal;
+  font-weight: 500;
+
+  white-space: pre-line;
+
+  opacity: 0.75;
+
+  max-width: 80%;
+}
+
+.SeasonCard__date {
+  text-transform: uppercase;
+}
+
+.SeasonCard__type,
+.SeasonCard__date {
+  font-size  : 10px;
+  font-weight: 600;
+
+  margin-top: 12px;
+  padding   : 6px 12px;
+
+  background-color: white;
+
+  color: black;
+
+  border-radius: 999px;
+
+  width : fit-content;
+  height: fit-content;
+}
+
+.SeasonCard__type {
+  background-color: color-mix(in oklab, #FFF 10%, transparent);
+  color           : white;
+  font-weight     : 500;
+}
+
+
+.SeasonCard__group {
+  gap: 10px;
+}

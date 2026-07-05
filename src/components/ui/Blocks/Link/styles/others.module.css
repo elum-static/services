@@ -1,0 +1,7 @@
+.Link._hover {
+  text-decoration: underline;
+}
+
+.Link::after {
+  opacity: 0;
+}

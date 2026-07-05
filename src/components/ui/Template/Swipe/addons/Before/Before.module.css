@@ -1,0 +1,23 @@
+.Before {
+  position : absolute !important;
+  left     : 0;
+  bottom   : 0;
+  top      : 0;
+  transform: translateX(-100%);
+  z-index  : 1;
+}
+
+.Before::after {
+  content : " ";
+  width   : var(--swipe--activated);
+  height  : 100%;
+  position: absolute;
+  right   : calc(var(--swipe--activated, 0px) * -1);
+  bottom  : 0;
+  top     : 0;
+  cursor  : grab;
+}
+
+.Before--hidden {
+  opacity: 0;
+}

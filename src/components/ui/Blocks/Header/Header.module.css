@@ -1,0 +1,164 @@
+.Header {
+  position   : sticky;
+  top        : 0;
+  /* overflow: hidden; */
+  width      : 100%;
+
+  box-sizing: border-box;
+
+  padding: 0px var(--global-padding);
+
+  display    : flex;
+  align-items: center;
+
+  gap: 5px;
+
+  z-index: 1000;
+
+
+  display        : flex;
+  flex-direction : column;
+  justify-content: center;
+  align-items    : center;
+
+  text-align: center;
+}
+
+.Header__type--panel>._Group:first-child,
+.Header__type--modal.Header__safe--top>._Group:first-child {
+  min-height     : var(--header_height);
+  justify-content: center;
+  align-items    : center;
+}
+
+.Header__site--vk.Header__safe--right {
+  display        : flex;
+  justify-content: start;
+}
+
+.Header__site--vk.Header__safe--right>._Group:first-child>*:last-child {
+  /* content     : " ";
+  width       : 90px;
+  min-width   : 90px;
+  height      : 100%; */
+  margin-right: 78px;
+}
+
+/* .Header__site--vk.Header__safe--right>._Group:first-child ._Content__direction--column {
+  align-items: start;
+  text-align : start;
+}
+
+.Header__site--vk.Header__safe--right>._Group:first-child ._Content__direction--row {
+  justify-content: start;
+  text-align     : start;
+} */
+
+.Header__type--panel {
+  padding-top: var(--safe-area-inset-top);
+  min-height : calc(var(--header_height) + var(--safe-area-inset-top));
+}
+
+.Header__type--panel.Header__site--tg {
+  padding-top: calc(var(--content-safe-area-inset-top) + var(--safe-area-inset-top));
+  min-height : calc(var(--content-safe-area-inset-top) + var(--header_height) + var(--safe-area-inset-top));
+}
+
+.Header__type--modal.Header__safe--top {
+  padding-top             : calc(var(--safe-area-inset-top));
+  /* min-height           : calc(var(--safe-area-inset-top) + var(--header_height)); */
+}
+
+.Header__type--modal.Header__site--tg.Header__safe--top {
+  padding-top: calc(var(--content-safe-area-inset-top) + var(--safe-area-inset-top, 0px));
+}
+
+/* shadow */
+.Header--shadow::after {
+  content : " ";
+  position: absolute;
+  left    : 0;
+  right   : 0;
+  top     : 0;
+  bottom  : 0;
+
+
+  --shadow-color: color-mix(in srgb, var(--background_secondary) 80%, transparent);
+
+  box-shadow: inset 0 calc(var(--height)) 20px -20px var(--shadow-color)
+}
+
+.Header__type--modal::after {
+  --shadow-color: color-mix(in srgb, var(--background_primary) 80%, transparent);
+}
+
+.Header__bgColor--background_secondary.Header--shadow::after {
+  /* background-color: var(--background_secondary);
+  border          : unset; */
+
+  --shadow-color: color-mix(in srgb, var(--background_secondary) 80%, transparent);
+}
+
+/* .Header__type--modal {
+  padding-top: calc(var(--content-safe-area-inset-top, 0px) + var(--safe-area-inset-top));
+  min-height : calc(var(--content-safe-area-inset-top, 0px) + var(--safe-area-inset-top) + var(--header_height));
+} */
+
+.Header__type--modal {
+  padding: var(--global-padding);
+}
+
+/* .Header__type--modal.Header__site--tg::after {
+  content: none;
+} */
+
+.Header__connection {
+  padding: 0px 20px;
+
+  position: fixed;
+  left    : 0;
+  right   : 0;
+  top     : 0;
+
+  display    : flex;
+  align-items: center;
+
+  background-color: var(--color_red);
+  color           : var(--color_red--text);
+  transform       : translateY(-110%);
+
+  height     : var(--header_height);
+  min-height : var(--header_height);
+  padding-top: var(--safe-area-inset-top);
+  transition : 0.3s;
+
+  z-index: 10;
+}
+
+.Header__connection--visible {
+  transform: translateY(0%);
+}
+
+.Header__connection.Header__type--panel.Header__site--tg {
+  padding-top: calc(var(--content-safe-area-inset-top) + var(--safe-area-inset-top));
+  min-height : calc(var(--content-safe-area-inset-top) + var(--header_height) - var(--safe-area-inset-top));
+}
+
+.Header__bgColor--black {
+  background-color: var(--fixed_color_black);
+  border          : unset;
+}
+
+/* .Header__bgColor--background_secondary {
+  background-color: var(--background_secondary);
+  border          : unset;
+} */
+
+.Header__bgColor--transparent {
+  background-color: transparent;
+  border          : unset;
+}
+
+.Header__type--panel {
+  position: absolute;
+}

@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512"
+  style="width:100%;height:100%;transform:translate3d(0,0,0);content-visibility:visible">
+  <defs>
+    <linearGradient id="gLightning" x1="-154.392" x2="157.435" y1="3.898" y2="3.898"
+      gradientUnits="userSpaceOnUse" spreadMethod="pad">
+      <stop offset="0%" stop-color="#F90" />
+      <stop offset="34%" stop-color="#FFB601" />
+      <stop offset="50%" stop-color="#FFD302" />
+      <stop offset="78%" stop-color="#FFB202" />
+      <stop offset="100%" stop-color="#FF9102" />
+    </linearGradient>
+    <linearGradient id="fLightning" x1="-154.392" x2="157.435" y1="3.898" y2="3.898"
+      gradientUnits="userSpaceOnUse" spreadMethod="pad">
+      <stop offset="0%" stop-color="#F90" />
+      <stop offset="34%" stop-color="#FFB601" />
+      <stop offset="50%" stop-color="#FFD302" />
+      <stop offset="78%" stop-color="#FFB202" />
+      <stop offset="100%" stop-color="#FF9102" />
+    </linearGradient>
+    <clipPath id="aLightning">
+      <path d="M0 0h512v512H0z" />
+    </clipPath>
+    <clipPath id="eLightning">
+      <path d="M0 0h512v512H0z" />
+    </clipPath>
+  </defs>
+  <g clip-path="url(#aLightning)">
+    <g clip-path="url(#eLightning)" style="display:block"
+      transform="matrix(.94 0 0 .94 15.36 11.36)">
+      <g style="display:block">
+        <path fill="url(#fLightning)"
+          d="m89-217.5-242 238 153.802.196-130.598 201.86L156.5-39.5H2.5z"
+          transform="translate(256 256)" />
+        <path fill="none" stroke="#F78C00" stroke-linecap="round" stroke-linejoin="round"
+          stroke-width="8" d="m345 38.5-242 238 153.803.196-130.598 201.86L412.5 216.5h-154z" />
+      </g>
+      <g style="display:block">
+        <path fill="url(#gLightning)"
+          d="m89-217.5-242 238 153.802.196-130.598 201.86L156.5-39.5H2.5z"
+          transform="translate(256 256)" />
+        <path fill="none" stroke="#F78C00" stroke-linecap="round" stroke-linejoin="round"
+          stroke-width="8" d="m345 38.5-242 238 153.803.196-130.598 201.86L412.5 216.5h-154z" />
+      </g>
+      <g style="display:block">
+        <path fill="#FFFFD9"
+          d="m290.864 113.048-134.39 144.067 139.687.362-92.622 129.078 154.519-150.87-137.77.122z" />
+        <path fill="none" stroke="#FEF828" stroke-width="4"
+          d="m290.864 113.048-134.39 144.067 139.687.362-92.622 129.078 154.519-150.87-137.77.122z" />
+      </g>
+      <path fill="none" stroke="#EF7C00" stroke-linecap="round" stroke-linejoin="round"
+        stroke-width="8" d="m-153 20.5 153.802.196-130.598 201.86L156.5-39.5" style="display:block"
+        transform="translate(256 256)" />
+    </g>
+  </g>
+</svg>

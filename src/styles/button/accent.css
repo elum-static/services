@@ -1,0 +1,50 @@
+:root {
+  /* Filled */
+  --btn_bg_accent-filled: #FFFFFF;
+  --btn_cr_accent-filled: #1A1A1A;
+  --btn_br_accent-filled: #FFFFFF;
+
+  --btn_bg_accent-filled--hover: #E5E5E5;
+  --btn_cr_accent-filled--hover: #1A1A1A;
+  --btn_br_accent-filled--hover: #E5E5E5;
+
+  --btn_bg_accent-filled--active: #CCCCCC;
+  --btn_cr_accent-filled--active: #1A1A1A;
+  --btn_br_accent-filled--active: #CCCCCC;
+  /* Outline */
+  --btn_bg_accent-outline       : transparent;
+  --btn_cr_accent-outline       : #FFFFFF;
+  --btn_br_accent-outline       : #FFFFFF;
+
+  --btn_bg_accent-outline--hover: #242424;
+  --btn_cr_accent-outline--hover: #FFFFFF;
+  --btn_br_accent-outline--hover: #242424;
+
+  --btn_bg_accent-outline--active: #2E2E2E;
+  --btn_cr_accent-outline--active: #FFFFFF;
+  --btn_br_accent-outline--active: #2E2E2E;
+  /* Ghost */
+  --btn_bg_accent-ghost          : #1A1A1A;
+  --btn_cr_accent-ghost          : #FFFFFF;
+  --btn_br_accent-ghost          : #1A1A1A;
+
+  --btn_bg_accent-ghost--hover: #242424;
+  --btn_cr_accent-ghost--hover: #FFFFFF;
+  --btn_br_accent-ghost--hover: #242424;
+
+  --btn_bg_accent-ghost--active: #2E2E2E;
+  --btn_cr_accent-ghost--active: #FFFFFF;
+  --btn_br_accent-ghost--active: #2E2E2E;
+  /* Soft */
+  --btn_bg_accent-soft         : #202020;
+  --btn_cr_accent-soft         : #FFFFFF;
+  --btn_br_accent-soft         : #202020;
+
+  --btn_bg_accent-soft--hover: #242424;
+  --btn_cr_accent-soft--hover: #FFFFFF;
+  --btn_br_accent-soft--hover: #242424;
+
+  --btn_bg_accent-soft--active: #2E2E2E;
+  --btn_cr_accent-soft--active: #FFFFFF;
+  --btn_br_accent-soft--active: #2E2E2E;
+}

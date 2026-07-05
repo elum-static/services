@@ -1,0 +1,50 @@
+:root {
+  /* Filled */
+  --btn_bg_neutral-filled: #FFFFFF;
+  --btn_cr_neutral-filled: #1A1A1A;
+  --btn_br_neutral-filled: #FFFFFF;
+
+  --btn_bg_neutral-filled--hover: #E5E5E5;
+  --btn_cr_neutral-filled--hover: #1A1A1A;
+  --btn_br_neutral-filled--hover: #E5E5E5;
+
+  --btn_bg_neutral-filled--active: #CCCCCC;
+  --btn_cr_neutral-filled--active: #1A1A1A;
+  --btn_br_neutral-filled--active: #CCCCCC;
+  /* Outline */
+  --btn_bg_neutral-outline       : transparent;
+  --btn_cr_neutral-outline       : #FFFFFF;
+  --btn_br_neutral-outline       : #FFFFFF;
+
+  --btn_bg_neutral-outline--hover: #242424;
+  --btn_cr_neutral-outline--hover: #FFFFFF;
+  --btn_br_neutral-outline--hover: #242424;
+
+  --btn_bg_neutral-outline--active: #2E2E2E;
+  --btn_cr_neutral-outline--active: #FFFFFF;
+  --btn_br_neutral-outline--active: #2E2E2E;
+  /* Ghost */
+  --btn_bg_neutral-ghost          : transparent;
+  --btn_cr_neutral-ghost          : #FFFFFF;
+  --btn_br_neutral-ghost          : transparent;
+
+  --btn_bg_neutral-ghost--hover: #242424;
+  --btn_cr_neutral-ghost--hover: #FFFFFF;
+  --btn_br_neutral-ghost--hover: #242424;
+
+  --btn_bg_neutral-ghost--active: #2E2E2E;
+  --btn_cr_neutral-ghost--active: #FFFFFF;
+  --btn_br_neutral-ghost--active: #2E2E2E;
+  /* Soft */
+  --btn_bg_neutral-soft         : #202020;
+  --btn_cr_neutral-soft         : #FFFFFF;
+  --btn_br_neutral-soft         : #202020;
+
+  --btn_bg_neutral-soft--hover: #242424;
+  --btn_cr_neutral-soft--hover: #FFFFFF;
+  --btn_br_neutral-soft--hover: #242424;
+
+  --btn_bg_neutral-soft--active: #2E2E2E;
+  --btn_cr_neutral-soft--active: #FFFFFF;
+  --btn_br_neutral-soft--active: #2E2E2E;
+}

@@ -1,0 +1,55 @@
+.Icon {
+  position       : relative;
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+
+  border-radius: 999px;
+}
+
+.Icon>* {
+  width : 100%;
+  height: 100%;
+}
+
+.Icon__color--primary {
+  color: var(--text_primary);
+}
+
+.Icon__color--white {
+  color: var(--fixed_color_white);
+}
+
+.Icon__color--gray {
+  color: var(--color_gray);
+}
+
+.Icon__color--red {
+  color: var(--color_red);
+}
+
+.Icon__color--green {
+  color: var(--color_green);
+}
+
+.Icon__color--accent {
+  color: var(--color_accent);
+}
+
+.Icon__color--inherit {
+  color: inherit;
+}
+
+.Icon__badge {
+  display        : block;
+  position       : absolute;
+  left           : 4px;
+  right          : 0px;
+  bottom         : 0;
+  top            : 4px;
+  display        : flex;
+  justify-content: flex-end;
+  align-items    : flex-end;
+
+  pointer-events: none;
+}

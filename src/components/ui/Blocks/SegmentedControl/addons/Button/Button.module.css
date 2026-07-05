@@ -1,0 +1,13 @@
+.Button {
+  z-index: 2;
+
+  color              : var(--text_secondary) !important;
+  /* padding-left    : 0px;
+  padding-right      : 0px; */
+  background-color   : transparent !important;
+  border             : none !important;
+}
+
+.Button--selected {
+  color: var(--btn_cr_accent-filled) !important;
+}

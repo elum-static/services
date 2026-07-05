@@ -1,0 +1,45 @@
+.Multipliers {
+  overflow-y : hidden;
+  overflow-x : scroll;
+  flex-shrink: 0;
+  padding    : 10px;
+
+  position: sticky;
+  top     : 0;
+
+  font-family: monospace;
+}
+
+.Multipliers__item {
+  padding      : 5px 10px;
+  border-radius: 13px;
+
+  transition: 0.3s;
+}
+
+.Multipliers__item--default {
+  border          : solid 2px #3c58c5;
+  background-color: rgba(60, 88, 197, 0.3);
+  color           : rgb(126, 152, 255);
+}
+
+.Multipliers__item--medium {
+
+  border          : solid 2px #743ec2;
+  background-color: rgba(116, 62, 194, 0.3);
+  color           : #be90ff;
+}
+
+.Multipliers__item--large {
+  border          : solid 2px #e99208;
+  background-color: rgba(233, 146, 8, 0.3);
+  color           : #ffc76e;
+}
+
+.Multipliers__item--expectation {
+  border          : solid 2px #6e719a;
+  background-color: rgba(47, 48, 66, 0.3);
+  color           : #bec0ec;
+
+  transition: 0s;
+}

@@ -1,0 +1,167 @@
+.Cell {
+  appearance      : none;
+  border          : none;
+  outline         : none;
+  background-color: transparent;
+  padding         : 0px;
+
+  position  : relative;
+  color     : var(--text_primary);
+  transition: 0.3s;
+
+  width     : 100%;
+  height    : auto;
+  box-sizing: border-box;
+
+  display           : flex;
+  /* align-items    : normal; */
+  align-items       : stretch;
+  justify-content   : center;
+
+  text-decoration: none;
+}
+
+.Cell__container {
+  display    : flex;
+  align-items: center;
+
+  overflow: hidden;
+
+  position: relative;
+  width   : 100%;
+}
+
+/* Separator */
+.Cell--separator .Cell__container::before {
+  content : " ";
+  position: absolute;
+  left    : 0;
+  right   : 0;
+  bottom  : 0;
+
+  background-color: var(--separator_secondary);
+  height          : 1px;
+  width           : 100%;
+}
+
+.Cell:only-child.Cell--separator--auto .Cell__container::before {
+  content: none;
+}
+
+.Cell:not(:only-child):last-child.Cell--separator--auto .Cell__container::before {
+  content: none;
+}
+
+.Cell__content {
+  position      : relative;
+  width         : 100%;
+  z-index       : 2;
+  display       : flex;
+  flex-direction: column;
+  text-align    : start;
+
+  overflow: hidden;
+}
+
+.Cell__expandable {
+  color     : var(--icon_tertiary);
+  /* display: none; */
+}
+
+.Cell__expandable--always {
+  display: block;
+}
+
+.Cell__before {
+  position: relative;
+
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+
+  margin: auto 0px;
+}
+
+.Cell__after {
+  position: relative;
+
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+}
+
+/* [START] background */
+.Cell__background--transparent {
+  background-color: transparent;
+}
+
+.Cell__background--primary {
+  background-color: var(--background_primary);
+}
+
+.Cell__background--secondary {
+  background-color: var(--background_secondary);
+}
+
+.Cell._disabled {
+  opacity: var(--opacity_disable);
+}
+
+.Cell__background--primary._hover {
+  background-color: var(--background_primary--hover);
+}
+
+.Cell__background--primary._active {
+  background-color: var(--background_primary--active);
+}
+
+.Cell--selected {
+  background-color: var(--background_primary--selected);
+}
+
+/* Для компонента Swipe */
+._swipeHover .Cell {
+  background-color: var(--background_primary--hover);
+}
+
+._swipeActive .Cell {
+  background-color: var(--background_primary--active);
+}
+
+._swipeDisabled .Cell {
+  opacity: var(--opacity_disable);
+}
+
+/* Text */
+.Cell__title {
+  position   : relative;
+  width      : 100%;
+  font-size  : var(--font_size--medium);
+  line-height: var(--font_height--medium);
+  color      : var(--text_primary);
+}
+
+.Cell__subTitle {
+  position   : relative;
+  width      : 100%;
+  font-size  : var(--font_size--small);
+  line-height: var(--font_height--small);
+  color      : var(--text_secondary);
+}
+
+/* alignItems */
+/* .Cell__alignItems--center {
+  align-items: center;
+}
+
+.Cell__alignItems--start {
+  align-items: start;
+} */
+
+.Cell__behind {
+  position: absolute;
+  left    : 0;
+  right   : 0;
+  top     : 0;
+  bottom  : 0;
+}

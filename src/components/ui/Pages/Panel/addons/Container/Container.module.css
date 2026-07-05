@@ -1,0 +1,49 @@
+.Container {
+  position  : relative;
+  height    : 100%;
+  overflow  : hidden;
+  box-sizing: border-box;
+
+  display       : flex;
+  flex-direction: column;
+
+  max-width: 480px;
+  width    : 100%;
+}
+
+.Container--scroll {
+  overflow-y: scroll;
+  overflow-x: hidden;
+
+  /* overscroll-behavior          : none; */
+  -webkit-overflow-scrolling   : touch;
+  /* overscroll-behavior       : none;
+  -webkit-overflow-scrolling   : touch; */
+}
+
+.Container__tabbar_safe {
+  display : block;
+  position: relative;
+  width   : 100%;
+}
+
+.Container--scroll-disabled {
+  touch-action: none;
+  overflow    : hidden;
+}
+
+.Container__safe {
+  pointer-events: none;
+}
+
+.Container__bgColor--background_secondary {
+  background-color: var(--background_secondary);
+}
+
+.Container__bgColor--background_game_crush {
+  background-color: var(--background_game_crush);
+}
+
+.Container__bgColor--background_game_mines {
+  background: var(--background_game_mines);
+}

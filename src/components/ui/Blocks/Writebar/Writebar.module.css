@@ -1,0 +1,31 @@
+.WriteBar {
+
+  --writebar__gap    : 10px;
+  --writebar__padding: 10px;
+  display            : flex;
+  justify-content    : center;
+  align-items        : center;
+  flex-direction     : column;
+
+  position            : relative;
+  width               : 100%;
+  /* gap              : var(--writebar__gap); */
+  /* padding-bottom   : var(--safe-area-inset-bottom); */
+
+  padding: var(--tabbar-padding);
+
+  box-sizing: border-box;
+
+  /* background-color   : var(--background_secondary); */
+  /* border-top      : solid 1px var(--separator_secondary); */
+
+  transition: 0.3s;
+
+  z-index: 5;
+
+  overflow: hidden;
+}
+
+/* .focus {
+  padding-bottom: 0px;
+} */

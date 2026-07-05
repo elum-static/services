@@ -1,0 +1,78 @@
+.Background {
+  box-sizing: border-box;
+
+  /* padding      : 4px 16px; */
+  padding: 2px;
+
+
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+  flex-direction : column;
+  height         : 100%;
+
+  overflow : hidden;
+  max-width: 100%;
+
+
+  min-height: 44px;
+  min-width : 44px;
+}
+
+.Background__padding--small {
+  padding: 2px;
+}
+
+.Background__padding--text {
+  padding: 2px 16px;
+}
+
+.Background__padding--text-right {
+  padding      : 2px;
+  padding-right: 16px;
+}
+
+/* background */
+.Background--background {
+  border: solid 0.5px var(--separator_primary);
+
+  backdrop-filter: blur(3px);
+
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1),
+    inset 0 0 20px rgba(255, 255, 255, 0.05);
+
+  border-radius: 999px;
+}
+
+.Background--background::before {
+  content         : " ";
+  position        : absolute;
+  left            : 0;
+  right           : 0;
+  top             : 0;
+  bottom          : 0;
+  background-color: var(--background_primary);
+  opacity         : 0.85;
+
+  border-radius: inherit;
+  z-index      : -1;
+}
+
+.Background__background--primary::before {
+  content         : " ";
+  position        : absolute;
+  left            : 0;
+  right           : 0;
+  top             : 0;
+  bottom          : 0;
+  background-color: var(--background_primary);
+  opacity         : 1;
+
+  border-radius: inherit;
+  z-index      : -1;
+}
+
+.Background--full {
+  width: 100%;
+}

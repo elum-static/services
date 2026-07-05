@@ -1,0 +1,22 @@
+.After {
+  position : absolute !important;
+  right    : 0;
+  bottom   : 0;
+  top      : 0;
+  transform: translateX(100%);
+}
+
+.After::before {
+  content : " ";
+  width   : var(--swipe--activated);
+  height  : 100%;
+  position: absolute;
+  left    : calc(var(--swipe--activated, 0px) * -1);
+  bottom  : 0;
+  top     : 0;
+  cursor  : grab;
+}
+
+.After--hidden {
+  opacity: 0;
+}

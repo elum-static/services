@@ -1,0 +1,5 @@
+.Container {
+  gap: var(--writebar__gap);
+
+  padding: 0px var(--writebar__padding) 0px var(--writebar__padding);
+}

@@ -1,0 +1,124 @@
+.FixedLayout {
+  position: sticky;
+  z-index : 5;
+
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+  flex-direction : column;
+
+  padding   : 10px;
+  box-sizing: border-box;
+
+}
+
+.FixedLayout__position--top {
+  top: 0;
+}
+
+.FixedLayout__position--bottom {
+  bottom: 0;
+}
+
+.FixedLayout--margin {
+  margin-top: auto;
+}
+
+
+
+/* safe */
+.FixedLayout__position--top.FixedLayout--safe {
+  padding-top: calc(var(--safe-area-inset-top) + var(--global-padding));
+}
+
+/* .FixedLayout__position--bottom.FixedLayout--safe {
+  padding-bottom: var(--tabbar-padding);
+} */
+
+.FixedLayout--fixed.FixedLayout--safeTabbar {
+  margin-bottom: var(--tabbar_height);
+}
+
+.FixedLayout--fixed.FixedLayout--safeTabbar.FixedLayout__position--bottom {
+  margin-bottom : var(--tabbar_height);
+  padding-bottom: 0px;
+}
+
+
+.FixedLayout--fixed {
+  position: fixed;
+  left    : 0;
+  right   : 0;
+}
+
+.FixedLayout__fake {
+  position: relative;
+  width   : 100%;
+
+  display: block;
+}
+
+.FixedLayout__in {
+  position: relative;
+  width   : 100%;
+  height  : 100%;
+
+  box-sizing: border-box;
+
+  border: solid 0.5px var(--separator_primary);
+
+  border-radius: var(--global-border-radius);
+
+  backdrop-filter: blur(3px);
+
+  /* box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1),
+    inset 0 0 20px rgba(255, 255, 255, 0.05); */
+}
+
+.FixedLayout__in::before {
+  content            : " ";
+  position           : absolute;
+  left               : 0;
+  right              : 0;
+  top                : 0;
+  bottom             : 0;
+  /* background-color: var(--background_primary);
+  opacity            : 0.85; */
+
+  backdrop-filter: blur(8px)saturate(var(--saturation));
+  box-shadow     : var(--glass-shadow);
+
+  background-color: color-mix(in oklab, var(--fixed_color_white)15%, transparent);
+
+  z-index: -1;
+
+  border-radius: inherit;
+}
+
+
+.FixedLayout--safeTabbar .FixedLayout__in {
+
+  max-width: var(--tabbar_width);
+
+  padding      : 2px;
+  border-radius: 999px;
+}
+
+
+/* Background */
+/* .FixedLayout__background--none .FixedLayout__in::before {
+  content: none;
+}
+
+.FixedLayout__background--background_game_crush_secondary .FixedLayout__in::before {
+  background-color: var(--background_game_crush_secondary);
+}
+
+.FixedLayout__background--none .FixedLayout__in {
+  border-radius  : unset;
+  border         : unset;
+  backdrop-filter: unset;
+  box-shadow     : unset;
+
+} */

@@ -1,0 +1,40 @@
+.Replenishment__input {
+  appearance: none;
+  border    : none;
+  outline   : none;
+  background: transparent;
+  width     : 100%;
+
+  color: var(--text_primary);
+
+  font-size  : 60px;
+  line-height: normal;
+}
+
+.Replenishment__input::-webkit-outer-spin-button,
+.Replenishment__input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin            : 0;
+}
+
+/* Firefox — скрываем стрелки */
+.Replenishment__input[type="number"] {
+  -moz-appearance: textfield;
+  appearance     : textfield;
+  /* стандартное свойство для современных браузеров */
+}
+
+
+.Replenishment__placeholder {
+  box-sizing   : border-box;
+  width        : 100%;
+  border-radius: 12px;
+  padding      : 8px 12px;
+
+  background: linear-gradient(to right, oklab(0.705 0.143615 0.157301 / 0.95) 0%, oklab(0.75 0.102507 0.151596 / 0.95) 50%, oklab(0.705 0.143615 0.157301 / 0.95) 100%);
+}
+
+/*
+
+var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from)var(--tw-gradient-from-position), var(--tw-gradient-to)var(--tw-gradient-to-position))
+*/

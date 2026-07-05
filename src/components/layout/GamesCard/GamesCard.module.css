@@ -1,0 +1,29 @@
+.GamesCard {
+  /* padding: 16px; */
+  width    : auto;
+  min-width: fit-content;
+
+
+  color: white;
+
+  display       : flex;
+  flex-direction: column;
+
+  overflow     : hidden;
+  border-radius: 13px;
+  height       : 100%;
+}
+
+.GamesCard--glass {
+  box-shadow: var(--glass-shadow);
+}
+
+.GamesCard__img {
+  width    : calc(33.3333vw - 1.58333rem);
+  max-width: min(144px, 33.3333vw - 1rem);
+  display  : block;
+
+  background-size    : cover;
+  background-repeat  : no-repeat;
+  background-position: 50%;
+}

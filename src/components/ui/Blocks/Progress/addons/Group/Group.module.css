@@ -1,0 +1,12 @@
+.Group {
+  position: relative;
+  width   : 100%;
+  overflow: hidden;
+
+  gap: 4px;
+}
+
+/* padding */
+.Group__padding--default {
+  padding: 10px;
+}

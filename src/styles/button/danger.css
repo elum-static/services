@@ -1,0 +1,50 @@
+:root {
+  /* Filled */
+  --btn_bg_danger-filled: #ED3419;
+  --btn_cr_danger-filled: #FFFFFF;
+  --btn_br_danger-filled: #ED3419;
+
+  --btn_bg_danger-filled--hover: #DF2C14;
+  --btn_cr_danger-filled--hover: #FFFFFF;
+  --btn_br_danger-filled--hover: #DF2C14;
+
+  --btn_bg_danger-filled--active: #C61A09;
+  --btn_cr_danger-filled--active: #FFFFFF;
+  --btn_br_danger-filled--active: #C61A09;
+  /* Outline */
+  --btn_bg_danger-outline       : transparent;
+  --btn_cr_danger-outline       : #ED3419;
+  --btn_br_danger-outline       : #ED3419;
+
+  --btn_bg_danger-outline--hover: #DF2C14;
+  --btn_cr_danger-outline--hover: #FFFFFF;
+  --btn_br_danger-outline--hover: #DF2C14;
+
+  --btn_bg_danger-outline--active: #C61A09;
+  --btn_cr_danger-outline--active: #FFFFFF;
+  --btn_br_danger-outline--active: #C61A09;
+  /* Ghost */
+  --btn_bg_danger-ghost          : transparent;
+  --btn_cr_danger-ghost          : #C61A09;
+  --btn_br_danger-ghost          : transparent;
+
+  --btn_bg_danger-ghost--hover: #242424;
+  --btn_cr_danger-ghost--hover: #E91500;
+  --btn_br_danger-ghost--hover: #242424;
+
+  --btn_bg_danger-ghost--active: #2E2E2E;
+  --btn_cr_danger-ghost--active: #FF1700;
+  --btn_br_danger-ghost--active: #2E2E2E;
+  /* Soft */
+  --btn_bg_danger-soft         : #F67A68;
+  --btn_cr_danger-soft         : #FFFFFF;
+  --btn_br_danger-soft         : #F67A68;
+
+  --btn_bg_danger-soft--hover: #F26753;
+  --btn_cr_danger-soft--hover: #FFFFFF;
+  --btn_br_danger-soft--hover: #F26753;
+
+  --btn_bg_danger-soft--active: #F15B45;
+  --btn_cr_danger-soft--active: #FFFFFF;
+  --btn_br_danger-soft--active: #F15B45;
+}

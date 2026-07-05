@@ -1,0 +1,22 @@
+.Hidden {
+  position: relative;
+  width   : 100%;
+  opacity : 0;
+
+  display   : block;
+  transition: opacity 0.2s;
+
+}
+
+.Hidden--anim {
+  height    : 0px;
+  transition: 0.2s;
+}
+
+.Hidden__content {
+  position: relative;
+  width   : 100%;
+
+  display : block;
+  overflow: hidden;
+}

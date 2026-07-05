@@ -1,0 +1,40 @@
+.InputBalance {
+  appearance: none;
+  border    : none;
+  outline   : none;
+  width     : 100%;
+  background: transparent;
+
+  color: var(--text_primary);
+
+  font-size  : 60px;
+  line-height: normal;
+
+}
+
+.InputBalance::-webkit-outer-spin-button,
+.InputBalance::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin            : 0;
+}
+
+/* Firefox — скрываем стрелки */
+.InputBalance[type="number"] {
+  -moz-appearance: textfield;
+  appearance     : textfield;
+  /* стандартное свойство для современных браузеров */
+}
+
+.InputBalance__group {
+  background   : var(--background_input);
+  border       : solid 2px var(--background_input_border);
+  padding      : 10px;
+  border-radius: 13px;
+}
+
+/* .InputBalance__group {
+  background   : #3d3f57;
+  border       : solid 2px #4d4e6b;
+  padding      : 10px;
+  border-radius: 13px;
+} */

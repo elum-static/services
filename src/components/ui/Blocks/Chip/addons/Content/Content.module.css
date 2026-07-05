@@ -1,0 +1,11 @@
+.Content:only-child {
+  padding: 0px 4px;
+}
+
+.Content:not(:only-child):first-child {
+  padding-left: 4px;
+}
+
+.Content:not(:only-child):last-child {
+  padding-right: 4px;
+}

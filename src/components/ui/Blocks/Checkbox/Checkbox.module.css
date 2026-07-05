@@ -1,0 +1,29 @@
+.Checkbox {
+  position        : relative;
+  border-radius   : 8px;
+  background-color: var(--separator_primary);
+  border          : solid 2px var(--separator_primary);
+
+  transition: 0.3s;
+}
+
+.Checkbox--selected {
+  background-color: var(--color_accent);
+  border          : solid 2px var(--color_accent);
+}
+
+.Checkbox__check {
+  display: block;
+
+  opacity  : 0;
+  transform: scale(0);
+
+  transition: 0.3s;
+
+  color: var(--text_primary);
+}
+
+.Checkbox--selected .Checkbox__check {
+  opacity  : 1;
+  transform: scale(1);
+}

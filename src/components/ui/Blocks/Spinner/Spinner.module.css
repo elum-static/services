@@ -1,0 +1,96 @@
+.Spinner {
+  position       : relative;
+  display        : flex;
+  transition     : .4s;
+  justify-content: center;
+  align-items    : center;
+
+  opacity: 0;
+
+  transition: 0.3s;
+}
+
+.Spinner--visible {
+  opacity: 1;
+}
+
+.Spinner svg {
+  animation: _SpinnerRotateDefault 2s linear infinite;
+  z-index  : 2;
+}
+
+.Spinner circle {
+  stroke        : currentColor;
+  stroke-linecap: round;
+}
+
+.Spinner--animBorder.Spinner circle {
+  animation: _SpinnerDashDefault 2s ease-in-out infinite;
+}
+
+@keyframes _SpinnerRotateDefault {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes _SpinnerDashDefault {
+  0% {
+    stroke-dasharray : 1, 150;
+    stroke-dashoffset: 0;
+  }
+
+  50% {
+    stroke-dasharray : 90, 150;
+    stroke-dashoffset: -35;
+  }
+
+  100% {
+    stroke-dasharray : 90, 150;
+    stroke-dashoffset: -124;
+  }
+}
+
+/* Size */
+.Spinner__size--auto svg {}
+
+.Spinner__size--small svg {}
+
+.Spinner__size--regular svg {}
+
+.Spinner__size--medium svg {}
+
+.Spinner__size--large svg {}
+
+/* Colors */
+.Spinner__color--icon_tertiary {
+  color: var(--icon_tertiary);
+}
+
+.Spinner__color--primary {
+  color: var(--separator_primary);
+}
+
+.Spinner__color--secondary {
+  color: var(--separator_secondary);
+}
+
+.Spinner__color--inherit {
+  color: inherit;
+}
+
+.Spinner__progress {
+  position       : absolute;
+  left           : 0;
+  right          : 0;
+  top            : 0;
+  bottom         : 0;
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+
+  font-size  : var(--font_size--small);
+  line-height: var(--font_height--small);
+  color      : inherit;
+  margin-left: -1.5px;
+}

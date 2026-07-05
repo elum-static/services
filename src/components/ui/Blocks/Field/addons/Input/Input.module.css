@@ -1,0 +1,49 @@
+.Input {
+  position  : relative;
+  display   : block;
+  width     : 100%;
+  min-height: var(--min_height_input);
+  max-width : 100%;
+
+  background-color   : color-mix(in srgb, var(--background_input) 85%, transparent);
+  /* background-color: var(--background_input); */
+  border             : solid 0.5px var(--separator_primary);
+
+  appearance: none;
+  outline   : none;
+
+  -webkit-tap-highlight-color: transparent;
+
+  padding   : 10px 12px;
+  box-sizing: border-box;
+
+  color      : var(--text_primary);
+  font-size  : 16px;
+  line-height: 20px;
+
+  border-radius: calc(var(--global-border-radius) - var(--global-padding));
+
+  transition: 0.3s;
+
+  caret-color: var(--color_accent);
+
+
+
+
+  backdrop-filter: blur(3px);
+
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1),
+    inset 0 0 20px rgba(255, 255, 255, 0.05);
+
+}
+
+.Input::placeholder {
+  font-size     : 16px;
+  line-height   : 20px;
+  text-transform: none;
+}
+
+.Input:focus {
+  border: solid 1px var(--color_accent);
+}

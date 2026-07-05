@@ -1,0 +1,7 @@
+.Badge {
+  position : relative;
+  width    : auto;
+  min-width: min-content;
+  overflow : hidden;
+  height   : 100%;
+}

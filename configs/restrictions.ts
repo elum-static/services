@@ -1,0 +1,2 @@
+export const LIMIT_MESSAGE_LENGTH = 2000
+export const LIMIT_DIALOG_TITLE_LENGTH = 100

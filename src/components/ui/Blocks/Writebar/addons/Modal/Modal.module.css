@@ -1,0 +1,72 @@
+.Modal {
+  z-index : 1;
+  position: absolute;
+  top     : 0;
+  bottom  : 0;
+  left    : 0;
+  right   : 0;
+
+  overflow: hidden;
+  width   : 100%;
+  height  : 100vh;
+
+  display        : flex;
+  justify-content: end;
+  align-items    : center;
+  flex-direction : column;
+
+  background-color: transparent;
+  transform       : translateY(-100%);
+  pointer-events  : none;
+  transition      : background-color 0.3s;
+}
+
+.Modal__in {
+  position        : relative;
+  width           : 100%;
+  height          : auto;
+  max-height      : 80vh;
+  overflow        : hidden;
+  background-color: var(--background_secondary);
+
+  border-radius: 12px 12px 0px 0px;
+
+  transform: translateY(101%);
+
+  transition: 0.24s ease;
+  z-index   : 1;
+}
+
+.Modal--open {
+  pointer-events: all;
+}
+
+.Modal::before,
+.Modal::after {
+  content         : "";
+  position        : fixed;
+  left            : 0;
+  right           : 0;
+  top             : 0;
+  bottom          : 0;
+  background-color: transparent;
+  transition      : 0.3s;
+  pointer-events  : none;
+  transform       : translateZ(0px);
+}
+
+.Modal::before {
+  opacity: 0.4;
+}
+
+.Modal--open::before {
+  background-color: var(--writebar_bg_modal);
+}
+
+.Modal--open::after {
+  backdrop-filter: blur(4px);
+}
+
+.Modal--open .Modal__in {
+  transform: translateY(0%);
+}

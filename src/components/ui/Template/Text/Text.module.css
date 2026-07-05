@@ -1,0 +1,159 @@
+.Text {
+  display    : flex;
+  align-items: center;
+  width      : 100%;
+}
+
+/* Color */
+.Text__color--accent {
+  color: var(--color_accent);
+}
+
+.Text__color--accent--light {
+  color: var(--color_accent--light);
+}
+
+.Text__color--red {
+  color: var(--color_red);
+}
+
+.Text__color--green {
+  color: var(--color_green);
+}
+
+.Text__color--primary {
+  color: var(--text_primary);
+}
+
+.Text__color--secondary {
+  color: var(--text_secondary);
+}
+
+.Text__color--yellow {
+  color: var(--color_lightning);
+}
+
+/* Size */
+.Text__size--xx-small {
+  font-size  : var(--font_size--xx-small);
+  line-height: var(--font_height--xx-small);
+}
+
+.Text__size--x-small {
+  font-size  : var(--font_size--x-small);
+  line-height: var(--font_height--x-small);
+}
+
+.Text__size--small {
+  font-size  : var(--font_size--small);
+  line-height: var(--font_height--small);
+}
+
+.Text__size--medium {
+  font-size  : var(--font_size--medium);
+  line-height: var(--font_height--medium);
+}
+
+.Text__size--large {
+  font-size  : var(--font_size--large);
+  line-height: var(--font_height--large);
+}
+
+.Text__size--x-large {
+  font-size  : var(--font_size--x-large);
+  line-height: var(--font_height--x-large);
+}
+
+.Text__size--xx-large {
+  font-size  : var(--font_size--xx-large);
+  line-height: var(--font_height--xx-large);
+}
+
+/* Weight */
+.Text__weight--400 {
+  font-weight: 400;
+}
+
+.Text__weight--500 {
+  font-weight: 500;
+}
+
+.Text__weight--600 {
+  font-weight: 600;
+}
+
+.Text__weight--700 {
+  font-weight: 700;
+}
+
+/* Aligns */
+.Text__align--inherit ._TextContent {
+  text-align: inherit
+}
+
+.Text__align--start ._TextContent {
+  text-align: left;
+}
+
+.Text__align--center ._TextContent {
+  text-align: center
+}
+
+.Text__align--end ._TextContent {
+  text-align: right;
+}
+
+/* whiteSpace */
+.Text__whiteSpace--nowrap ._TextContent {
+  white-space: nowrap;
+}
+
+.Text__whiteSpace--breakSpaces ._TextContent {
+  white-space: break-spaces;
+}
+
+.Text--overflow ._TextContent {
+  position        : relative;
+  overflow        : hidden;
+  text-overflow   : ellipsis;
+  /* width        : 100%; */
+}
+
+/* justify */
+.Text__justify--start {
+  align-items: start;
+}
+
+.Text__justify--center {
+  align-items: center;
+}
+
+.Text__justify--end {
+  align-items: end;
+}
+
+/* gap */
+.Text__gap--medium {
+  gap: 8px;
+}
+
+.Text__gap--small {
+  gap: 4px;
+}
+
+.Text--inline {
+  display: inline-flex;
+  width  : auto;
+}
+
+/* Проверка поддержки line-clamp */
+@supports (-webkit-line-clamp: 2) or (line-clamp: 2) or (display: -webkit-box) {
+  .Text--lineClamp ._TextContent {
+    display           : -webkit-box !important;
+    line-clamp        : inherit !important;
+    -webkit-line-clamp: inherit !important;
+    -webkit-box-orient: vertical !important;
+    text-overflow     : ellipsis !important;
+    white-space       : unset !important;
+  }
+}

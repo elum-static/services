@@ -1,0 +1,33 @@
+.InfiniteScroll {
+  position            : relative;
+  /* height           : max-content; */
+  z-index             : 1;
+  /* overflow         : hidden; */
+  display             : flex;
+  flex-direction      : column;
+  width               : 100%;
+}
+
+.InfiniteScroll__in {
+  display       : flex;
+  flex-direction: column;
+}
+
+._InfiniteScroll--reverse {
+  flex-direction: column-reverse;
+}
+
+._InfiniteScroll--reverse .InfiniteScroll__in {
+  flex-direction: column-reverse;
+}
+
+
+/* .InfiniteScroll__in {
+  position: relative;
+  height: 100%;
+} */
+
+.InfiniteScroll__observe {
+  z-index : -999;
+  position: relative;
+}

@@ -1,0 +1,33 @@
+.Tabbar {
+  position                   : absolute;
+  bottom                     : 0;
+  left                       : 0;
+  right                      : 0;
+  width                      : 100%;
+  -webkit-tap-highlight-color: transparent;
+  display                    : flex;
+  justify-content            : center;
+  align-items                : center;
+
+  box-sizing : border-box;
+  padding    : var(--tabbar-padding);
+  padding-top: 10px;
+
+  z-index: 100;
+}
+
+.Tabbar::after {
+  content : " ";
+  position: absolute;
+  left    : 0;
+  right   : 0;
+  top     : 0;
+  bottom  : 0;
+
+  background-color: var(--background_primary);
+}
+
+.Tabbar__in {
+  width    : 100%;
+  max-width: 480px;
+}

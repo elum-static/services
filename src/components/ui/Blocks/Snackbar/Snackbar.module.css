@@ -1,0 +1,92 @@
+.Snackbar {
+  position : absolute;
+  left     : 0;
+  right    : 0;
+  z-index  : 10;
+  padding  : 10px;
+  transform: translateZ(0px);
+}
+
+.Snackbar__position--bottom {
+  bottom                   : calc(var(--tabbar_height) + var(--safe-area-inset-bottom, 0px) + 10px);
+  animation-name           : _SnackbarVisibleLeft;
+  animation-duration       : 0.4s;
+  animation-timing-function: ease-in-out;
+  animation-timing-function: cubic-bezier(0.68, 0.55, 0.265, 1.15);
+}
+
+.Snackbar__position--top {
+  padding-top              : calc(var(--safe-area-inset-top, 0px) + var(--content-safe-area-inset-top, 0px) + 10px);
+  top                      : 0;
+  animation-name           : _SnackbarVisibleTop;
+  animation-duration       : 0.4s;
+  animation-timing-function: ease-in-out;
+  animation-timing-function: cubic-bezier(0.68, 0.55, 0.265, 1.45);
+}
+
+.Snackbar__site--vk.Snackbar__position--top {
+  padding-top: calc(var(--safe-area-inset-top, 0px) + var(--content-safe-area-inset-top, 0px) + var(--header_height, 0px) + 10px);
+}
+
+.Snackbar__in {
+  position        : relative;
+  width           : 100%;
+  height          : 100%;
+  border-radius   : 12px;
+  background-color: var(--background_primary--active);
+  border          : solid 0.5px var(--separator_primary);
+
+  cursor: grabbing;
+
+}
+
+.Snackbar--anim .Snackbar__in {
+  transition: 0.3s;
+}
+
+.Snackbar__left--close {
+  transform : translateX(-100%);
+  transition: 0.3s;
+}
+
+.Snackbar__right--close {
+  transform : translateX(100%);
+  transition: 0.3s;
+}
+
+.Snackbar__top--close {
+  transform : translateY(-100%);
+  transition: 0.3s;
+}
+
+.Snackbar__site--vk.Snackbar__top--close {
+  transform: translateY(-100%);
+}
+
+
+.Snackbar__bottom--close {
+  transform : translateY(calc(100% + var(--tabbar_height) + var(--safe-area-inset-bottom, 0px) + 10px));
+  transition: 0.3s;
+}
+
+
+@keyframes _SnackbarVisibleTop {
+  from {
+    transform: translateY(-100%);
+  }
+
+  to {
+    transform: translateY(0%);
+  }
+}
+
+@keyframes _SnackbarVisibleLeft {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(0%);
+  }
+
+}

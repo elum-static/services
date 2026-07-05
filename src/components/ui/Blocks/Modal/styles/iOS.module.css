@@ -1,0 +1,25 @@
+/* border */
+.Modal__type--card .Modal__container_in,
+.Modal__type--card .Modal__footer {
+  border-radius: var(--global-border-radius);
+  border       : solid 1px var(--separator_secondary);
+}
+
+.Modal__type--panel .Modal__container_in {
+  border-radius : 16px 16px 0px 0px;
+  padding-bottom: var(--safe-area-inset-bottom);
+}
+
+.Modal--full.Modal__type--panel .Modal__container_in {
+  border-radius: 0px;
+}
+
+/* .Modal__container .Modal__container_in:not(:only-child) {
+  border-end-start-radius: calc(var(--global-border-radius) / 1.5);
+  border-end-end-radius  : calc(var(--global-border-radius) / 1.5);
+}
+
+.Modal__container .Modal__footer:not(:only-child) {
+  border-top-left-radius : calc(var(--global-border-radius) / 1.5);
+  border-top-right-radius: calc(var(--global-border-radius) / 1.5);
+} */

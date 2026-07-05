@@ -1,0 +1,27 @@
+.Spinner {}
+
+/* Size */
+.Spinner__size--auto svg {
+  width : 100%;
+  height: 100%;
+}
+
+.Spinner__size--small svg {
+  width : 24px;
+  height: 24px;
+}
+
+.Spinner__size--regular svg {
+  width : 32px;
+  height: 32px;
+}
+
+.Spinner__size--medium svg {
+  width : 44px;
+  height: 44px;
+}
+
+.Spinner__size--large svg {
+  width : 56px;
+  height: 56px;
+}

@@ -1,0 +1,52 @@
+.Separator {
+  display : block;
+  position: relative;
+}
+
+.Separator::after {
+  content   : " ";
+  position  : absolute;
+  left      : 0;
+  right     : 0;
+  top       : 0;
+  bottom    : 0;
+  height    : inherit;
+  box-sizing: border-box;
+  margin    : auto;
+
+  transition: 0.3s;
+}
+
+/* Color */
+.Separator__color--accent::after {
+  background-color: var(--color_accent);
+}
+
+.Separator__color--primary::after {
+  background-color: var(--separator_primary);
+}
+
+.Separator__color--secondary::after {
+  background-color: var(--separator_secondary);
+}
+
+/* Size */
+.Separator__size--full::after {
+  width: 100%;
+}
+
+.Separator__size--indent::after {
+  width: 80%;
+}
+
+/* Type */
+.Separator__type--horizontal {
+  width : 100%;
+  height: 1px;
+}
+
+.Separator__type--vertical {
+  width    : 1px;
+  min-width: 1px;
+  height   : 100%;
+}

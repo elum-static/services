@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "lib": ["dom", "dom.iterable", "es2017"],
+    "strict": true,
+    "target": "es2017",
+    "module": "esnext",
+    "outDir": "static",
+    "jsx": "preserve",
+    "jsxImportSource": "solid-js",
+    "moduleResolution": "bundler",
+    "noEmit": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "paths": {
+      "@network": ["../src/core/src/api/module/index.ts"],
+      "@network/types": ["../src/core/src/api/module/types.ts"],
+      "@public/*": ["../public/*"],
+      "src/*": ["../src/*"],
+      "root/*": ["../*"],
+      "@ui/*": ["../src/components/ui/*"],
+      "@layout/*": ["../src/components/layout/*"],
+      "@features/*": ["../src/components/features/*"],
+      "@atom/*": ["../src/engine/modules/smart-data/*"],
+      "@atom/state": ["../src/engine/state/index"],
+      "@core": ["../src/core/index"]
+    }
+  },
+  "exclude": ["node_modules", "static"],
+  "types": ["*.d.ts"]
+}

@@ -1,0 +1,63 @@
+.MinesGame__field {
+  display              : grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows   : repeat(5, 1fr);
+
+  gap       : 8px;
+  box-sizing: border-box;
+}
+
+.MinesGame__label {
+  /* padding: 10px; */
+}
+
+.MinesGame {
+  display       : flex;
+  flex-direction: column;
+  padding       : 10px;
+  gap           : 10px;
+}
+
+.MinesGame__badge {
+  display        : block;
+  backdrop-filter: blur(8px)saturate(var(--saturation));
+  box-shadow     : var(--glass-shadow);
+
+  background-color: color-mix(in oklab, var(--fixed_color_white)15%, transparent);
+
+  border-radius: 13px;
+
+  padding: 6px 12px;
+}
+
+.MinesGame__blocks {
+  gap           : 10px;
+  overflow-y    : visible;
+  overflow-x    : scroll;
+  padding       : 10px;
+  padding-bottom: 16px;
+  margin-left   : -10px;
+  margin-right  : -10px;
+  margin-top    : -10px;
+}
+
+.MinesGame__block {
+  backdrop-filter: blur(8px)saturate(var(--saturation));
+  box-shadow     : var(--glass-shadow);
+
+  background-color: color-mix(in oklab, var(--fixed_color_white)15%, transparent);
+
+  border-radius: 13px;
+
+  padding: 12px 20px;
+
+  transition: 0.3s;
+}
+
+.MinesGame__block__subtitle {
+  opacity: 0.5;
+}
+
+.MinesGame__block--inactive {
+  opacity: 0.4;
+}

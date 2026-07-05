@@ -1,0 +1,6 @@
+.CellList {
+  width           : 100%;
+  position        : relative;
+  overflow        : hidden;
+  /* border-radius: 13px; */
+}

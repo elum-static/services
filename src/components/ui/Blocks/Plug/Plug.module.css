@@ -1,0 +1,48 @@
+.Plug {
+  display        : flex;
+  flex-direction : column;
+  align-items    : center;
+  justify-content: center;
+  align-content  : center;
+  justify-content: end;
+
+  position          : relative;
+  /* overflow       : hidden; */
+  width             : 100%;
+  box-sizing        : border-box;
+
+  margin: 0 auto;
+
+  --plug_padding: 12px
+}
+
+.Plug--full {
+  height: 100%;
+}
+
+/* size */
+.Plug__size-x-small {
+  padding: 6px;
+}
+
+.Plug__size-small {
+  padding: 12px;
+}
+
+.Plug__size-medium {
+  padding: 24px;
+}
+
+.Plug__size-large {
+  padding       : 32px;
+  --plug_padding: 32px;
+}
+
+/* safe */
+.Plug__safe--top {
+  margin-top: var(--safe-area-inset-top, 0px);
+}
+
+.Plug__safe--bottom {
+  margin-bottom: var(--safe-area-inset-bottom, 0px);
+}

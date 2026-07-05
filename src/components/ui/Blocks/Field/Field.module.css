@@ -1,0 +1,32 @@
+.Field {
+  position: relative;
+  width   : 100%;
+
+  padding            : var(--global-padding);
+  /* margin          : auto; */
+  gap                : 10px;
+  box-sizing         : border-box;
+
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+
+}
+
+/* .Field__backgroundColor--background_secondary {
+  background-color: var(--background_secondary);
+  border          : solid 1px var(--separator_secondary);
+} */
+
+.Field__in {
+  position: relative;
+  width   : 100%;
+
+  border-radius: inherit;
+  gap          : 10px;
+
+}
+
+.Field__header {
+  padding: 0px 10px;
+}
