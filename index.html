@@ -1,21 +1,41 @@
 <!doctype html>
-<html lang="ru">
+<html lang="en" dir="ltr">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mini App Monkey</title>
-    <script>
-      window.TelegramGameProxy = window.TelegramGameProxy || {
-        receiveEvent: function () {},
-      };
-      window.TelegramGameProxy_receiveEvent =
-        window.TelegramGameProxy_receiveEvent || window.TelegramGameProxy.receiveEvent;
-    </script>
+    <meta charset="utf-8" />
+    <meta name="theme-color" content="var(--UU)" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no, user-scalable=no, viewport-fit=cover, minimum-scale=1, maximum-scale=1"
+    />
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <script type="module" crossorigin src="/assets/index-NQXUmSu-.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-lV74W9XV.css">
+    <script>
+      window.NativeTelegramWebApp = window.Telegram && window.Telegram.WebApp
+    </script>
+    <style>.no_js{align-items:center;background-color:#ff6347;bottom:0;color:white;display:flex;font-family:-apple-system,BlinkMacSystemFont,system-ui,sans-serif,Segoe UI,Roboto,Helvetica,Arial,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;font-size:16px;justify-content:center;left:0;line-height:20px;padding:20px;position:fixed;right:0;text-align:center;top:0;z-index:9999}</style>
+    <title>{APP_NAME}</title>
+    <script type="module" crossorigin src="/js/index.31fec81c.js"></script>
+    <link rel="modulepreload" crossorigin href="/js/vendor.9c73e08c.js">
+    
   </head>
-  <body>
-    <div id="root"></div>
-  </body>
+  <noscript>
+    <div class="no_js">
+      Ваш браузер не поддерживает JavaScript или он отключен. Приложение не будет работать!
+    </div>
+  </noscript>
+  <body id="root" style="top: auto; overflow: hidden"></body>
+  <!-- <script src="https://sad.adsgram.ai/js/sad.min.js"></script> -->
+
+  <!-- <script
+    defer
+    crossorigin
+    data-domain="static.ratingtma.com"
+    src="https://p2p.apiteam.ru/js/script.file-downloads.outbound-links.pageview-props.revenue.tagged-events.js"
+  ></script>
+  <script>
+    window.plausible =
+      window.plausible ||
+      function () {
+        ;(window.plausible.q = window.plausible.q || []).push(arguments)
+      }
+  </script> -->
 </html>
