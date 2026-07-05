@@ -68,8 +68,7 @@ class Network extends Emitter<EmitterNetwork> {
   private store: NetworkStore
   protected setStore: SetStoreFunction<NetworkStore>
 
-  // private socket = socketIO("https://monkey.elumapp.ru", {
-  private socket = socketIO("http://127.0.0.1:18302", {
+  private socket = socketIO("https://monkey.elumapp.ru", {
     path: "/ws",
     transports: ["websocket"],
     auth: createTelegramSocketAuth(),
