@@ -13,7 +13,7 @@ type Options = {
 }
 
 async function taskPartnerCheck(options: Options) {
-  return network.send<Response>("tasks.partnerCheck", options)
+  return network.send<Response>("task.partnerCheck", options)
 }
 
 export default taskPartnerCheck

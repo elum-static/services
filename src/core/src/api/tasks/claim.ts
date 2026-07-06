@@ -9,7 +9,7 @@ type Options = {
 }
 
 async function taskClaim(options: Options) {
-  return network.send<Response>("tasks.claim", options)
+  return network.send<Response>("task.claim", options)
 }
 
 export default taskClaim

@@ -354,7 +354,7 @@ const Default: Component<Default> = () => {
     })
 
     if (error) {
-      console.warn(`[tasks.partnerList] ${section.provider}: ${error.code}`)
+      console.warn(`[task.partnerList] ${section.provider}: ${error.code}`)
       resolveSection(key)
       return
     }

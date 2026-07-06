@@ -62,7 +62,7 @@ type Options = {
 }
 
 async function taskList(options: Options) {
-  return network.send<Response>("tasks.list", options)
+  return network.send<Response>("task.list", options)
 }
 
 export default taskList
