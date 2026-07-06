@@ -182,6 +182,28 @@ function getTaskStatus(task: TaskItem): string {
   return task.progress?.status || task.status || "available"
 }
 
+function isTaskReadyForClaim(task: TaskItem): boolean {
+  const status = getTaskStatus(task)
+  if (status === "ready" || status === "completed" || status === "claimable") {
+    return true
+  }
+
+  const target = task.progress?.target_count || task.target_count
+  const progress = task.progress?.progress ?? 0
+  return !!target && target > 0 && progress >= target
+}
+
+function getTaskClaimID(task: TaskItem): string {
+  return String(task.id || task.key || "")
+}
+
+function createOperationID(prefix: string): string {
+  if (crypto.randomUUID) {
+    return `${prefix}:${crypto.randomUUID()}`
+  }
+  return `${prefix}:${Date.now()}:${Math.random().toString(36).slice(2)}`
+}
+
 function getRewardAmount(reward: TaskReward): number {
   return reward.quantity ?? reward.amount ?? 0
 }
@@ -420,6 +442,26 @@ const Default: Component<Default> = () => {
     return true
   }
 
+  async function claimTask(task: TaskItem): Promise<boolean> {
+    const id = getTaskClaimID(task)
+    if (!id) {
+      setTaskError("INVALID_TASK")
+      return false
+    }
+
+    const { error } = await core.api.task.claim({
+      id,
+      operation_id: createOperationID(`task:claim:${id}`),
+    })
+    if (error) {
+      setTaskError(error.code || "TASK_CLAIM_FAILED")
+      return false
+    }
+
+    await loadTasks()
+    return true
+  }
+
   async function checkEmojiStatusTask(key: string) {
     if (await verifyTask(key)) {
       return
@@ -439,6 +481,11 @@ const Default: Component<Default> = () => {
     setTaskError("")
 
     try {
+      if (isTaskReadyForClaim(task)) {
+        await claimTask(task)
+        return
+      }
+
       if (isPartnerTask(task)) {
         const link = getTaskLink(task)
         if (link) {
@@ -617,6 +664,9 @@ const Default: Component<Default> = () => {
                             const buttonLabel = () => {
                               if (status() === "claimed") {
                                 return "Получено"
+                              }
+                              if (isTaskReadyForClaim(task)) {
+                                return "Получить"
                               }
                               if (
                                 task.key === EMOJI_STATUS_TASK_KEY &&
