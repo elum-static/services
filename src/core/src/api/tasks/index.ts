@@ -4,7 +4,7 @@ import calendarList from "./list"
 import taskPartnerCheck from "./partnerCheck"
 import taskPartnerList from "./partnerList"
 
-class Tasks {
+class Task {
   public list = calendarList
   public claim = calendarClaim
   public check = taskCheck
@@ -12,4 +12,4 @@ class Tasks {
   public partnerCheck = taskPartnerCheck
 }
 
-export default Tasks
+export default Task

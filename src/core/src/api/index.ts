@@ -4,7 +4,7 @@ import Calendar from "./calendar"
 import Cpa from "./cpa"
 import Referral from "./referral"
 import Season from "./season"
-import Tasks from "./tasks"
+import Task from "./tasks"
 import Game from "./game"
 import Payment from "./payment"
 
@@ -13,7 +13,7 @@ class API {
   public season = new Season()
   public referral = new Referral()
   public calendar = new Calendar()
-  public tasks = new Tasks()
+  public task = new Task()
   public cpa = new Cpa()
   public payment = new Payment()
   public game = new Game()

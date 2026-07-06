@@ -330,7 +330,7 @@ const Default: Component<Default> = () => {
   }
 
   async function loadDailyGroup(locale: string) {
-    const { response, error } = await core.api.tasks.list({ locale })
+    const { response, error } = await core.api.task.list({ locale })
     if (error) {
       setError(error.code || "UNKNOWN_ERROR")
       resolveSection(DAILY_SECTION.key)
@@ -345,7 +345,7 @@ const Default: Component<Default> = () => {
 
   async function loadPartnerGroup(section: (typeof PARTNER_SECTIONS)[number], locale: string) {
     const key = `partner.${section.provider}`
-    const { response, error } = await core.api.tasks.partnerList({
+    const { response, error } = await core.api.task.partnerList({
       provider: section.provider,
       group_key: PARTNER_GROUP_KEY,
       platform: PARTNER_PLATFORM,
@@ -379,7 +379,7 @@ const Default: Component<Default> = () => {
   }
 
   async function verifyTask(key: string): Promise<boolean> {
-    const { response, error } = await core.api.tasks.check({ key })
+    const { response, error } = await core.api.task.check({ key })
     if (error) {
       setTaskError(error.code || "UNKNOWN_ERROR")
       return false
@@ -399,7 +399,7 @@ const Default: Component<Default> = () => {
       return false
     }
 
-    const { response, error } = await core.api.tasks.partnerCheck({ issue_ref: issueRef })
+    const { response, error } = await core.api.task.partnerCheck({ issue_ref: issueRef })
     if (error) {
       setTaskError(error.code || "UNKNOWN_ERROR")
       return false
