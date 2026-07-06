@@ -213,12 +213,12 @@ const Replenishment: Component<Replenishment> = (props) => {
           "box-sizing": "border-box",
         }}
       >
-        <Flex gap={"8px"} direction={"row"} style={{ width: "100%" }}>
+        <div class={style.Replenishment__assets}>
           <For each={ASSETS}>
             {(asset) => (
               <Button
+                class={style.Replenishment__asset}
                 size={"small"}
-                stretched
                 appearance={store.assetCode === asset.code ? "accent" : "secondary"}
                 onClick={() => setStore("assetCode", asset.code)}
               >
@@ -230,7 +230,7 @@ const Replenishment: Component<Replenishment> = (props) => {
               </Button>
             )}
           </For>
-        </Flex>
+        </div>
 
         <Show when={store.products.length > 1}>
           <Flex gap={"8px"} direction={"row"} wrap={"wrap"} style={{ width: "100%" }}>
