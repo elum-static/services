@@ -19,6 +19,8 @@ interface Default extends JSX.HTMLAttributes<HTMLElement> {
 }
 
 const EMOJI_STATUS_TASK_KEY = "daily.set_emoji_status"
+const TOPUP_TASK_KEY = "daily.topup_100_stars"
+const SOCKET_CHECK_TASK_KEYS = new Set(["daily.send_message", "daily.publish_story", EMOJI_STATUS_TASK_KEY])
 const EMOJI_STATUS_CUSTOM_EMOJI_ID = "5242274946482213968"
 const EMOJI_STATUS_SET_TIMEOUT = 15000
 const PARTNER_GROUP_KEY = "daily"
@@ -379,6 +381,10 @@ const Default: Component<Default> = () => {
   }
 
   async function verifyTask(key: string): Promise<boolean> {
+    if (!SOCKET_CHECK_TASK_KEYS.has(key)) {
+      return false
+    }
+
     const { response, error } = await core.api.task.check({ key })
     if (error) {
       setTaskError(error.code || "UNKNOWN_ERROR")
@@ -444,6 +450,11 @@ const Default: Component<Default> = () => {
 
       if (key === EMOJI_STATUS_TASK_KEY) {
         await checkEmojiStatusTask(key)
+        return
+      }
+
+      if (key === TOPUP_TASK_KEY) {
+        core.route.modal.replenishmentCurrency()
         return
       }
 
@@ -612,6 +623,9 @@ const Default: Component<Default> = () => {
                                 pendingEmojiCheckKeys()[task.key]
                               ) {
                                 return "Проверить"
+                              }
+                              if (task.key === TOPUP_TASK_KEY) {
+                                return "Пополнить"
                               }
                               return "Выполнить"
                             }
