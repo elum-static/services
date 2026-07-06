@@ -7,6 +7,7 @@ import BonusStars from "./BonusStars/BonusStars"
 import MarketGifts from "./MarketGifts/MarketGifts"
 import Referral from "./Referral/Referral"
 import Replenishment from "./Replenishment/Replenishment"
+import ReplenishmentCurrency from "./Replenishment/ReplenishmentCurrency"
 import MinesStart from "./MinesStart/MinesStart"
 
 interface Modals extends JSX.HTMLAttributes<HTMLDivElement> {}
@@ -20,6 +21,7 @@ const Modals: Component<Modals> = (props) => {
       <Modal.Root.Path nav={"bonus_stars"} component={BonusStars} />
       <Modal.Root.Path nav={"market_gifts"} component={MarketGifts} />
       <Modal.Root.Path nav={"referral"} component={Referral} />
+      <Modal.Root.Path nav={"replenishment_currency"} component={ReplenishmentCurrency} />
       <Modal.Root.Path nav={"replenishment"} component={Replenishment} />
       <Modal.Root.Path nav={"mines_start"} component={MinesStart} />
     </Modal.Root>

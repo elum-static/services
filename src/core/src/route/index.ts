@@ -1,9 +1,17 @@
 import { backPage, nextPage } from "root/router"
 
 class Route {
+  private replenishmentAssetCode = "TON"
+
   constructor() {}
 
   public goBack = (options?: Parameters<typeof backPage>[0]) => backPage(options)
+
+  public getReplenishmentAssetCode = () => this.replenishmentAssetCode
+
+  public setReplenishmentAssetCode = (assetCode: string) => {
+    this.replenishmentAssetCode = assetCode
+  }
 
   public game = {
     default: () => nextPage({ view: "games", panel: "default" }),
@@ -19,7 +27,14 @@ class Route {
     bonusStars: () => nextPage({ modal: "bonus_stars" }),
     marketGifts: () => nextPage({ modal: "market_gifts" }),
     referral: () => nextPage({ modal: "referral" }),
-    replenishment: () => nextPage({ modal: "replenishment" }),
+    replenishmentCurrency: () => nextPage({ modal: "replenishment_currency" }),
+    replenishment: (assetCode?: string) => {
+      if (assetCode) {
+        this.setReplenishmentAssetCode(assetCode)
+      }
+
+      return nextPage({ modal: "replenishment" })
+    },
     minesStart: () => nextPage({ modal: "mines_start" }),
   }
 

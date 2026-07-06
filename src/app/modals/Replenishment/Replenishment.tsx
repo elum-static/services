@@ -6,6 +6,7 @@ import { Button, Flex, Header, Modal, Text } from "src/components/ui"
 import core from "src/core"
 import { IconStars } from "src/source"
 import { clamp } from "@minsize/utils"
+import { findReplenishmentAsset } from "./assets"
 
 interface Replenishment extends JSX.HTMLAttributes<HTMLDivElement> {
   nav?: string
@@ -32,21 +33,6 @@ type Product = {
   }
 }
 
-type AssetOption = {
-  code: string
-  label: string
-  decimals: number
-}
-
-const ASSETS: AssetOption[] = [
-  { code: "TON", label: "TON", decimals: 9 },
-  { code: "USDT_TON", label: "USDT", decimals: 6 },
-  { code: "NOT_TON", label: "NOT", decimals: 9 },
-  { code: "DOGS_TON", label: "DOGS", decimals: 9 },
-  { code: "MAJOR_TON", label: "MAJOR", decimals: 9 },
-  { code: "UTYA_TON", label: "UTYA", decimals: 9 },
-]
-
 const formatAssetAmount = (minor: number, decimals: number) => {
   const value = minor / 10 ** decimals
 
@@ -55,14 +41,12 @@ const formatAssetAmount = (minor: number, decimals: number) => {
   })
 }
 
-const findAsset = (assetCode: string) =>
-  ASSETS.find((asset) => asset.code === assetCode) || ASSETS[0]
-
 // FIXME: Language
 const Replenishment: Component<Replenishment> = (props) => {
+  const initialAssetCode = findReplenishmentAsset(core.route.getReplenishmentAssetCode()).code
   const [store, setStore] = createStore<Store>({
     value: 0,
-    assetCode: ASSETS[0].code,
+    assetCode: initialAssetCode,
     productID: "",
     products: [],
     loading: false,
@@ -73,7 +57,7 @@ const Replenishment: Component<Replenishment> = (props) => {
   const selectedProduct = createMemo(() =>
     store.products.find((product) => product.id === store.productID),
   )
-  const selectedAsset = createMemo(() => findAsset(store.assetCode))
+  const selectedAsset = createMemo(() => findReplenishmentAsset(store.assetCode))
   const paymentAmountMinor = createMemo(() => {
     const product = selectedProduct()
 
@@ -213,25 +197,6 @@ const Replenishment: Component<Replenishment> = (props) => {
           "box-sizing": "border-box",
         }}
       >
-        <div class={style.Replenishment__assets}>
-          <For each={ASSETS}>
-            {(asset) => (
-              <Button
-                class={style.Replenishment__asset}
-                size={"small"}
-                appearance={store.assetCode === asset.code ? "accent" : "secondary"}
-                onClick={() => setStore("assetCode", asset.code)}
-              >
-                <Button.Content>
-                  <Text color={"inherit"} align={"center"}>
-                    <Text.Content>{asset.label}</Text.Content>
-                  </Text>
-                </Button.Content>
-              </Button>
-            )}
-          </For>
-        </div>
-
         <Show when={store.products.length > 1}>
           <Flex gap={"8px"} direction={"row"} wrap={"wrap"} style={{ width: "100%" }}>
             <For each={store.products}>

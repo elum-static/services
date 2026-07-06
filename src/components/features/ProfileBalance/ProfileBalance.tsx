@@ -113,7 +113,7 @@ const ProfileBalance: Component<ProfileBalance> = (props) => {
                 appearance={"accent"}
                 stretched
                 size={"medium"}
-                onClick={core.route.modal.replenishment}
+                onClick={core.route.modal.replenishmentCurrency}
               >
                 <Button.Content>
                   <Flex style={{ width: "100%" }}>
