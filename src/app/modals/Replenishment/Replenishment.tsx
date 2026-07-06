@@ -32,8 +32,20 @@ type Product = {
   }
 }
 
-const ASSETS = ["TON"]
-const TON_DECIMALS = 9
+type AssetOption = {
+  code: string
+  label: string
+  decimals: number
+}
+
+const ASSETS: AssetOption[] = [
+  { code: "TON", label: "TON", decimals: 9 },
+  { code: "USDT_TON", label: "USDT", decimals: 6 },
+  { code: "NOT_TON", label: "NOT", decimals: 9 },
+  { code: "DOGS_TON", label: "DOGS", decimals: 9 },
+  { code: "MAJOR_TON", label: "MAJOR", decimals: 9 },
+  { code: "UTYA_TON", label: "UTYA", decimals: 9 },
+]
 
 const formatAssetAmount = (minor: number, decimals: number) => {
   const value = minor / 10 ** decimals
@@ -43,11 +55,14 @@ const formatAssetAmount = (minor: number, decimals: number) => {
   })
 }
 
+const findAsset = (assetCode: string) =>
+  ASSETS.find((asset) => asset.code === assetCode) || ASSETS[0]
+
 // FIXME: Language
 const Replenishment: Component<Replenishment> = (props) => {
   const [store, setStore] = createStore<Store>({
     value: 0,
-    assetCode: ASSETS[0],
+    assetCode: ASSETS[0].code,
     productID: "",
     products: [],
     loading: false,
@@ -58,6 +73,7 @@ const Replenishment: Component<Replenishment> = (props) => {
   const selectedProduct = createMemo(() =>
     store.products.find((product) => product.id === store.productID),
   )
+  const selectedAsset = createMemo(() => findAsset(store.assetCode))
   const paymentAmountMinor = createMemo(() => {
     const product = selectedProduct()
 
@@ -110,10 +126,18 @@ const Replenishment: Component<Replenishment> = (props) => {
     setStore("error", "")
 
     try {
+      const sourceWallet = core.tonConnect.address
+
+      if (!sourceWallet) {
+        setStore("error", "Не удалось получить адрес привязанного кошелька")
+        return
+      }
+
       const { response, error } = await core.api.payment.cryptoTransaction({
         id: product.id,
         asset_code: store.assetCode,
         quantity: store.value,
+        source_wallet: sourceWallet,
         locale: "ru",
       })
 
@@ -195,12 +219,12 @@ const Replenishment: Component<Replenishment> = (props) => {
               <Button
                 size={"small"}
                 stretched
-                appearance={store.assetCode === asset ? "accent" : "secondary"}
-                onClick={() => setStore("assetCode", asset)}
+                appearance={store.assetCode === asset.code ? "accent" : "secondary"}
+                onClick={() => setStore("assetCode", asset.code)}
               >
                 <Button.Content>
                   <Text color={"inherit"} align={"center"}>
-                    <Text.Content>{asset}</Text.Content>
+                    <Text.Content>{asset.label}</Text.Content>
                   </Text>
                 </Button.Content>
               </Button>
@@ -268,7 +292,8 @@ const Replenishment: Component<Replenishment> = (props) => {
         <Flex padding={"0px 10px"} style={{ width: "100%", "box-sizing": "border-box" }}>
           <Text color={"secondary"} size={"small"}>
             <Text.Content>
-              К оплате: {formatAssetAmount(paymentAmountMinor(), TON_DECIMALS)} {store.assetCode}
+              К оплате: {formatAssetAmount(paymentAmountMinor(), selectedAsset().decimals)}{" "}
+              {selectedAsset().label}
             </Text.Content>
           </Text>
         </Flex>
@@ -348,7 +373,9 @@ const Replenishment: Component<Replenishment> = (props) => {
             <Button.Content>
               <Text color={"inherit"} align={"center"}>
                 <Text.Content>
-                  {core.tonConnect.connected ? "Пополнить через TON" : "Привязать кошелёк"}
+                  {core.tonConnect.connected
+                    ? `Пополнить через ${selectedAsset().label}`
+                    : "Привязать кошелёк"}
                 </Text.Content>
               </Text>
             </Button.Content>

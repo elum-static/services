@@ -41,6 +41,10 @@ type Options = {
    */
   quantity?: number
   /**
+   * `source_wallet` передает привязанный TON кошелек пользователя для crypto checkout.
+   */
+  source_wallet?: string
+  /**
    * `locale` выбирает язык, используемый при обработке данных о продукте.
    */
   locale?: string
