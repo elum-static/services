@@ -36,6 +36,15 @@ type LoadingSection = {
 }
 
 type VerifyTaskResult = "completed" | "not_completed" | "error"
+type TaskActionKind =
+  | "app_action"
+  | "amount_action"
+  | "channel_subscribe"
+  | "channel_boost"
+  | "advertisement_view"
+  | "external"
+  | "composite"
+  | ""
 
 const PARTNER_SECTIONS = [
   {
@@ -269,13 +278,24 @@ function isPartnerTask(task: TaskItem): boolean {
   return task.task_kind === "partner" || (task.key || "").startsWith("partner_issue:")
 }
 
-function isSubscriptionOrBoostTask(task: TaskItem): boolean {
-  return (
-    task.action_kind === "channel_subscribe" ||
-    task.action_kind === "channel_boost" ||
-    task.task_kind === "channel_subscribe" ||
-    task.task_kind === "channel_boost"
-  )
+function getTaskActionKind(task: TaskItem): TaskActionKind {
+  const actionKind = String(task.action_kind || "") as TaskActionKind
+  if (actionKind) {
+    return actionKind
+  }
+  if (isPartnerTask(task)) {
+    return "external"
+  }
+  if (task.key === TOPUP_TASK_KEY) {
+    return "amount_action"
+  }
+  if (task.task_kind === "channel_subscribe" || task.task_kind === "channel_boost") {
+    return task.task_kind
+  }
+  if (task.task_kind === "complex") {
+    return "composite"
+  }
+  return ""
 }
 
 function normalizeTaskLink(value: string): string {
@@ -525,6 +545,117 @@ const Default: Component<Default> = () => {
     setPendingEmojiCheckKeys((value) => ({ ...value, [key]: true }))
   }
 
+  async function runAppActionTask(task: TaskItem, key: string) {
+    if (key === EMOJI_STATUS_TASK_KEY) {
+      await checkEmojiStatusTask(key)
+      return
+    }
+
+    const result = await verifyTask(key)
+    if (result === "completed" || result === "error") {
+      return
+    }
+
+    const link = getTaskLink(task)
+    if (link) {
+      openTaskLink(link)
+      setOpenedActionKeys((value) => ({ ...value, [key]: true }))
+      return
+    }
+
+    setTaskError("TASK_NOT_COMPLETED")
+  }
+
+  function runAmountActionTask() {
+    core.route.modal.replenishmentCurrency()
+  }
+
+  async function runChannelTask(task: TaskItem, key: string) {
+    const result = await verifyTask(key, true)
+    if (result === "completed" || result === "error") {
+      return
+    }
+    if (openedActionKeys()[key]) {
+      setTaskError("TASK_NOT_COMPLETED")
+      return
+    }
+
+    const link = getTaskLink(task)
+    if (link) {
+      openTaskLink(link)
+      setOpenedActionKeys((value) => ({ ...value, [key]: true }))
+      return
+    }
+
+    setTaskError("TASK_NOT_COMPLETED")
+  }
+
+  async function runAdvertisementTask(task: TaskItem, key: string) {
+    const link = getTaskLink(task)
+    if (link && !openedActionKeys()[key]) {
+      openTaskLink(link)
+      setOpenedActionKeys((value) => ({ ...value, [key]: true }))
+      return
+    }
+
+    const result = await verifyTask(key, true)
+    if (result !== "completed" && result !== "error") {
+      setTaskError("TASK_NOT_COMPLETED")
+    }
+  }
+
+  async function runExternalTask(task: TaskItem, key: string) {
+    if (await verifyPartnerTask(task, true)) {
+      return
+    }
+    if (openedActionKeys()[key]) {
+      await verifyPartnerTask(task)
+      return
+    }
+
+    const link = getTaskLink(task)
+    if (link) {
+      openTaskLink(link)
+      setOpenedActionKeys((value) => ({ ...value, [key]: true }))
+      return
+    }
+
+    await verifyPartnerTask(task)
+  }
+
+  async function runCompositeTask(task: TaskItem) {
+    if (!(await claimTask(task))) {
+      setTaskError("TASK_NOT_COMPLETED")
+    }
+  }
+
+  async function runTaskByActionKind(task: TaskItem, key: string) {
+    switch (getTaskActionKind(task)) {
+      case "app_action":
+        await runAppActionTask(task, key)
+        return
+      case "amount_action":
+        runAmountActionTask()
+        return
+      case "channel_subscribe":
+      case "channel_boost":
+        await runChannelTask(task, key)
+        return
+      case "advertisement_view":
+        await runAdvertisementTask(task, key)
+        return
+      case "external":
+        await runExternalTask(task, key)
+        return
+      case "composite":
+        await runCompositeTask(task)
+        return
+      default:
+        await runAppActionTask(task, key)
+        return
+    }
+  }
+
   async function checkTask(task: TaskItem) {
     const key = task.key || ""
     if (!key || checkingKey()) {
@@ -540,53 +671,7 @@ const Default: Component<Default> = () => {
         return
       }
 
-      if (isPartnerTask(task)) {
-        if (await verifyPartnerTask(task, true)) {
-          return
-        }
-        const link = getTaskLink(task)
-        if (link) {
-          openTaskLink(link)
-          setOpenedActionKeys((value) => ({ ...value, [key]: true }))
-          return
-        }
-        await verifyPartnerTask(task)
-        return
-      }
-
-      if (isSubscriptionOrBoostTask(task)) {
-        const result = await verifyTask(key, true)
-        if (result === "completed" || result === "error") {
-          return
-        }
-        if (openedActionKeys()[key]) {
-          setTaskError("TASK_NOT_COMPLETED")
-          return
-        }
-        const link = getTaskLink(task)
-        if (link) {
-          openTaskLink(link)
-          setOpenedActionKeys((value) => ({ ...value, [key]: true }))
-          return
-        }
-        setTaskError("TASK_NOT_COMPLETED")
-        return
-      }
-
-      if (key === EMOJI_STATUS_TASK_KEY) {
-        await checkEmojiStatusTask(key)
-        return
-      }
-
-      if (key === TOPUP_TASK_KEY) {
-        core.route.modal.replenishmentCurrency()
-        return
-      }
-
-      if ((await verifyTask(key)) !== "completed") {
-        setTaskError("TASK_NOT_COMPLETED")
-        return
-      }
+      await runTaskByActionKind(task, key)
     } catch (reason) {
       setTaskError(reason instanceof Error ? reason.message : "TASK_CHECK_FAILED")
     } finally {
@@ -746,20 +831,26 @@ const Default: Component<Default> = () => {
                               if (isTaskReadyForClaim(task)) {
                                 return "Получить"
                               }
+                              const actionKind = getTaskActionKind(task)
                               if (
                                 task.key === EMOJI_STATUS_TASK_KEY &&
                                 pendingEmojiCheckKeys()[task.key]
                               ) {
                                 return "Проверить"
                               }
-                              if (task.key === TOPUP_TASK_KEY) {
+                              if (actionKind === "amount_action") {
                                 return "Пополнить"
                               }
                               if (
                                 openedActionKeys()[task.key || ""] ||
-                                isSubscriptionOrBoostTask(task)
+                                actionKind === "channel_subscribe" ||
+                                actionKind === "channel_boost" ||
+                                actionKind === "advertisement_view"
                               ) {
                                 return "Проверить"
+                              }
+                              if (actionKind === "external") {
+                                return openedActionKeys()[task.key || ""] ? "Проверить" : "Выполнить"
                               }
                               return "Выполнить"
                             }
