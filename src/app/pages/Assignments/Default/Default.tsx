@@ -20,8 +20,8 @@ interface Default extends JSX.HTMLAttributes<HTMLElement> {
 
 const EMOJI_STATUS_TASK_KEY = "daily.set_emoji_status"
 const TOPUP_TASK_KEY = "daily.topup_100_stars"
-const SOCKET_CHECK_TASK_KEYS = new Set(["daily.send_message", "daily.publish_story"])
-const SOCKET_CUSTOM_CHECK_TASK_KEYS = new Set([EMOJI_STATUS_TASK_KEY])
+const SOCKET_CHECK_TASK_KEYS = new Set<string>([])
+const SOCKET_CUSTOM_CHECK_TASK_KEYS = new Set(["daily.send_message", "daily.publish_story", EMOJI_STATUS_TASK_KEY])
 const EMOJI_STATUS_CUSTOM_EMOJI_ID = "5242274946482213968"
 const EMOJI_STATUS_SET_TIMEOUT = 15000
 const PARTNER_GROUP_KEY = "daily"
