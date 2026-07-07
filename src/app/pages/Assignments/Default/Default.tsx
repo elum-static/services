@@ -35,6 +35,8 @@ type LoadingSection = {
   description: string
 }
 
+type VerifyTaskResult = "completed" | "not_completed" | "error"
+
 const PARTNER_SECTIONS = [
   {
     provider: "tgrass",
@@ -452,22 +454,22 @@ const Default: Component<Default> = () => {
     await setTelegramEmojiStatus(EMOJI_STATUS_CUSTOM_EMOJI_ID)
   }
 
-  async function verifyTask(key: string): Promise<boolean> {
-    if (!SOCKET_CHECK_TASK_KEYS.has(key)) {
-      return false
+  async function verifyTask(key: string, force = false): Promise<VerifyTaskResult> {
+    if (!force && !SOCKET_CHECK_TASK_KEYS.has(key)) {
+      return "not_completed"
     }
 
     const { response, error } = await core.api.task.check({ key })
     if (error) {
       setTaskError(error.code || "UNKNOWN_ERROR")
-      return false
+      return "error"
     }
     if (response && !response.completed) {
-      return false
+      return "not_completed"
     }
 
     await loadTasks()
-    return true
+    return "completed"
   }
 
   async function verifyPartnerTask(task: TaskItem, silentNotCompleted = false): Promise<boolean> {
@@ -515,7 +517,7 @@ const Default: Component<Default> = () => {
   }
 
   async function checkEmojiStatusTask(key: string) {
-    if (await verifyTask(key)) {
+    if ((await verifyTask(key)) === "completed") {
       return
     }
 
@@ -553,7 +555,12 @@ const Default: Component<Default> = () => {
       }
 
       if (isSubscriptionOrBoostTask(task)) {
-        if (await verifyTask(key)) {
+        const result = await verifyTask(key, true)
+        if (result === "completed" || result === "error") {
+          return
+        }
+        if (openedActionKeys()[key]) {
+          setTaskError("TASK_NOT_COMPLETED")
           return
         }
         const link = getTaskLink(task)
@@ -576,7 +583,7 @@ const Default: Component<Default> = () => {
         return
       }
 
-      if (!(await verifyTask(key))) {
+      if ((await verifyTask(key)) !== "completed") {
         setTaskError("TASK_NOT_COMPLETED")
         return
       }
