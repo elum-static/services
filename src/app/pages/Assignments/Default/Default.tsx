@@ -79,6 +79,7 @@ type TelegramWebApp = {
     params?: Record<string, never>,
     callback?: (success: boolean) => void,
   ) => void
+  openTelegramLink?: (url: string) => void
 }
 
 type TelegramWindow = Window & {
@@ -244,11 +245,59 @@ function getTaskImageURL(task: TaskItem): string {
 }
 
 function getTaskLink(task: TaskItem): string {
-  return getPayloadString(task, ["link", "url", "action_url"])
+  return normalizeTaskLink(
+    getPayloadString(task, [
+      "link",
+      "url",
+      "action_url",
+      "button_url",
+      "resource_url",
+      "target_url",
+      "channel_url",
+      "boost_url",
+      "invite_link",
+      "chat_id",
+      "channel_id",
+      "channel",
+    ]),
+  )
 }
 
 function isPartnerTask(task: TaskItem): boolean {
   return task.task_kind === "partner" || (task.key || "").startsWith("partner_issue:")
+}
+
+function isSubscriptionOrBoostTask(task: TaskItem): boolean {
+  return (
+    task.action_kind === "channel_subscribe" ||
+    task.action_kind === "channel_boost" ||
+    task.task_kind === "channel_subscribe" ||
+    task.task_kind === "channel_boost"
+  )
+}
+
+function normalizeTaskLink(value: string): string {
+  const link = value.trim()
+  if (!link) {
+    return ""
+  }
+  if (link.startsWith("@")) {
+    return `https://t.me/${link.slice(1)}`
+  }
+  if (/^t\.me\//i.test(link)) {
+    return `https://${link}`
+  }
+  return link
+}
+
+function openTaskLink(link: string) {
+  const telegramWindow = window as TelegramWindow
+  const webApp = telegramWindow.NativeTelegramWebApp || telegramWindow.Telegram?.WebApp
+  if (/^https:\/\/t\.me\//i.test(link) && webApp?.openTelegramLink) {
+    webApp.openTelegramLink(link)
+    return
+  }
+  window.open(link, "_blank", "noopener,noreferrer")
 }
 
 function getPartnerIssueRef(task: TaskItem): string {
@@ -293,6 +342,7 @@ const Default: Component<Default> = () => {
   const [pendingSections, setPendingSections] = createSignal<Record<string, LoadingSection>>({})
   const [checkingKey, setCheckingKey] = createSignal("")
   const [pendingEmojiCheckKeys, setPendingEmojiCheckKeys] = createSignal<Record<string, boolean>>({})
+  const [openedActionKeys, setOpenedActionKeys] = createSignal<Record<string, boolean>>({})
   const [activeTaskIndexes, setActiveTaskIndexes] = createSignal<Record<string, number>>({})
   const [error, setError] = createSignal("")
   const [taskError, setTaskError] = createSignal("")
@@ -420,7 +470,7 @@ const Default: Component<Default> = () => {
     return true
   }
 
-  async function verifyPartnerTask(task: TaskItem): Promise<boolean> {
+  async function verifyPartnerTask(task: TaskItem, silentNotCompleted = false): Promise<boolean> {
     const issueRef = getPartnerIssueRef(task)
     if (!issueRef) {
       setTaskError("INVALID_PARTNER_TASK")
@@ -434,7 +484,9 @@ const Default: Component<Default> = () => {
     }
 
     if (!response?.completed) {
-      setTaskError(response?.status || "TASK_NOT_COMPLETED")
+      if (!silentNotCompleted) {
+        setTaskError(response?.status || "TASK_NOT_COMPLETED")
+      }
       return false
     }
 
@@ -487,11 +539,30 @@ const Default: Component<Default> = () => {
       }
 
       if (isPartnerTask(task)) {
+        if (await verifyPartnerTask(task, true)) {
+          return
+        }
         const link = getTaskLink(task)
         if (link) {
-          window.open(link, "_blank", "noopener,noreferrer")
+          openTaskLink(link)
+          setOpenedActionKeys((value) => ({ ...value, [key]: true }))
+          return
         }
         await verifyPartnerTask(task)
+        return
+      }
+
+      if (isSubscriptionOrBoostTask(task)) {
+        if (await verifyTask(key)) {
+          return
+        }
+        const link = getTaskLink(task)
+        if (link) {
+          openTaskLink(link)
+          setOpenedActionKeys((value) => ({ ...value, [key]: true }))
+          return
+        }
+        setTaskError("TASK_NOT_COMPLETED")
         return
       }
 
@@ -676,6 +747,12 @@ const Default: Component<Default> = () => {
                               }
                               if (task.key === TOPUP_TASK_KEY) {
                                 return "Пополнить"
+                              }
+                              if (
+                                openedActionKeys()[task.key || ""] ||
+                                isSubscriptionOrBoostTask(task)
+                              ) {
+                                return "Проверить"
                               }
                               return "Выполнить"
                             }
