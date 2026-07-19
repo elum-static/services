@@ -10,3 +10,9 @@ export { default as BetPlayers } from "./BetPlayers/BetPlayers"
 
 /** Mines */
 export { default as MinesItem } from "./Mines/Item/Item"
+
+/** Tasks */
+export { default as TaskGroup } from "./TaskGroup/TaskGroup"
+export { default as TaskItem } from "./TaskItem/TaskItem"
+export { default as TaskPartnerGroup } from "./TaskPartnerGroup/TaskPartnerGroup"
+export { default as TaskPartnerItem } from "./TaskPartnerItem/TaskPartnerItem"

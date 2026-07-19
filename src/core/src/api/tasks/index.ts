@@ -1,17 +1,19 @@
-import calendarClaim from "./claim"
+import taskClaim from "./claim"
 import taskCheck from "./check"
-import taskCustomCheck from "./customCheck"
-import calendarList from "./list"
-import taskPartnerCheck from "./partnerCheck"
+import taskList from "./list"
 import taskPartnerList from "./partnerList"
+import taskPartnerCheck from "./partnerCheck"
+import taskStart from "./start"
 
-class Task {
-  public list = calendarList
-  public claim = calendarClaim
+class Tasks {
+  public list = taskList
+  public claim = taskClaim
   public check = taskCheck
-  public customCheck = taskCustomCheck
+  public start = taskStart
+
+  // Партнёры
   public partnerList = taskPartnerList
   public partnerCheck = taskPartnerCheck
 }
 
-export default Task
+export default Tasks

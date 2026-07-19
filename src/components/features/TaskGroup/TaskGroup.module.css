@@ -1,0 +1,21 @@
+.TaskGroup {
+  padding: 10px 0px;
+  width  : 100%;
+
+}
+
+.TaskGroup__title {
+  padding       : 0px 10px;
+  padding-bottom: 0px;
+}
+
+.TaskGroup__container {
+  padding       : 0px 10px;
+  padding-bottom: 0px;
+
+  overflow-y: hidden;
+  overflow-x: scroll;
+  width     : 100%;
+
+  box-sizing: border-box;
+}

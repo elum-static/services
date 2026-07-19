@@ -1,9 +1,9 @@
 import { View } from "@ui/index"
-import { type JSX, type Component } from "solid-js"
-
-import { useRoute } from "root/router"
+import { type JSX, type Component, onMount, createSignal } from "solid-js"
 
 import Default from "./Default/Default"
+import { useRoute } from "root/router"
+import { createStore, produce } from "solid-js/store"
 
 interface Assignments extends JSX.HTMLAttributes<HTMLElement> {
   nav: string
@@ -14,7 +14,9 @@ const Assignments: Component<Assignments> = (props) => {
 
   return (
     <View nav={props.nav} activePanel={activePanel() || ""}>
-      <View.Path nav={"default"} component={Default} />
+      <View.Action>
+        <View.Path nav={"default"} component={Default} />
+      </View.Action>
     </View>
   )
 }

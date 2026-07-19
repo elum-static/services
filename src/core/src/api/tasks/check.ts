@@ -1,16 +1,14 @@
 import network from "../module"
 
-export type Response = {
-  completed: boolean
-  reason?: string
-  record?: unknown
-}
+type Response = Record<string, unknown>
 
 type Options = {
   key: string
+  provider?: string
+  variables?: Record<string, string>
 }
 
-async function taskCheck(options: Options) {
+function taskCheck(options: Options) {
   return network.send<Response>("task.check", options)
 }
 

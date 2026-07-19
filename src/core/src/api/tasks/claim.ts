@@ -1,7 +1,9 @@
 import network from "../module"
 
 // FIXME: unknown
-type Response = {}
+type Response = {
+  completed: boolean
+}
 
 type Options = {
   id: string

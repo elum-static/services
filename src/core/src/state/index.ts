@@ -8,6 +8,8 @@ import ReferralCount from "./referral/count"
 import ReferralEarned from "./referral/eared"
 import ReferralReward from "./referral/reward"
 import Balance from "./balance"
+import TaskList from "./task_list"
+import TaskPartnerList from "./task_partner_list"
 
 class State {
   constructor() {}
@@ -22,6 +24,8 @@ class State {
   public referral_count = new ReferralCount()
   public referral_earned = new ReferralEarned()
   public referral_code = new ReferralCode()
+  public task_list = new TaskList()
+  public task_partner_list = new TaskPartnerList()
 }
 
 export default State

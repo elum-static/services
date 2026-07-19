@@ -1,0 +1,28 @@
+.TaskPartnerItem {
+  background-color: var(--background_primary);
+
+  box-shadow: var(--glass-shadow);
+
+  border-radius: 13px;
+
+  /* width    : min(80%, 320px);
+  min-width: min(80%, 320px); */
+  width: 100%;
+
+  box-sizing: border-box;
+
+  height: 100%;
+}
+
+.TaskPartnerItem__badge {
+  background-color: #9f6aff;
+  color           : white;
+
+  border-radius: 13px;
+
+  padding: 4px 8px;
+}
+
+.TaskPartnerItem__buttons {
+  margin-top: auto;
+}

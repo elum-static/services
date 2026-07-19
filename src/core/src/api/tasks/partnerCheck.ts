@@ -1,18 +1,13 @@
 import network from "../module"
-import type { TaskItem } from "./list"
 
-export type Response = {
-  completed?: boolean
-  status?: string
-  task?: TaskItem
-}
+type Response = Record<string, unknown>
 
 type Options = {
   issue_ref: string
-  variables?: Record<string, string>
+  variables?: Record<string, unknown>
 }
 
-async function taskPartnerCheck(options: Options) {
+function taskPartnerCheck(options: Options) {
   return network.send<Response>("task.partnerCheck", options)
 }
 
