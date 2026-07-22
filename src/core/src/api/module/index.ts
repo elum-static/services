@@ -1,6 +1,7 @@
 import socketIO from "socket.io-client"
 import { onCleanup, onMount } from "solid-js"
 import { createStore, SetStoreFunction } from "solid-js/store"
+import { getAppData } from "@apiteam/twa-bridge/solid"
 import { TELEGRAM_APP_ID } from "root/configs/server"
 import Emitter from "src/core/utils/emitter"
 import { EmitterNetwork, schemaEmitterNetwork } from "./types"
@@ -56,8 +57,7 @@ type SocketAuth = {
 
 const createTelegramSocketAuth = (): SocketAuth => {
   return {
-    params:
-      "user=%7B%22id%22%3A1093776793%2C%22first_name%22%3A%22%D0%90%D1%80%D1%82%D1%83%D1%80%22%2C%22last_name%22%3A%22%D0%A4%D1%80%D0%B0%D0%BD%D0%BA%22%2C%22username%22%3A%22gmelum%22%2C%22language_code%22%3A%22ru%22%2C%22is_premium%22%3Atrue%2C%22allows_write_to_pm%22%3Atrue%2C%22photo_url%22%3A%22https%3A%5C%2F%5C%2Ft.me%5C%2Fi%5C%2Fuserpic%5C%2F320%5C%2FF1-CaPdnOBWj3heb1ffplwJXTkie5mnU0QsJD1CGOQ4.svg%22%7D&chat_instance=-5712478464564335418&chat_type=private&auth_date=1783160611&signature=Te-RJf1OClZ_VUIeKNYKZfWjJR1sCGEK6nnuGlPP4J1-Kpx4ppbSsUTfFKmsxOXDZ4EoUEgBXVO_otQQWa7lBw&hash=ad175128392882b9356e107a029e00e0fb16eb902cb56254fa1f0ef5837d0d9b",
+    params: window.Telegram?.WebApp?.initData || getAppData() || "",
     app_id: TELEGRAM_APP_ID,
     app_platform: "tma",
     referral_code: "",
