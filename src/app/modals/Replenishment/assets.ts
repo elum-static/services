@@ -5,6 +5,7 @@ export type ReplenishmentAsset = {
 }
 
 export const REPLENISHMENT_ASSETS: ReplenishmentAsset[] = [
+  { code: "XTR", label: "XTR", decimals: 0 },
   { code: "TON", label: "TON", decimals: 9 },
   { code: "USDT_TON", label: "USDT", decimals: 6 },
   { code: "NOT_TON", label: "NOT", decimals: 9 },

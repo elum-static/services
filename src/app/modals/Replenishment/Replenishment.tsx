@@ -33,6 +33,10 @@ type Product = {
   }
 }
 
+type TelegramWebApp = {
+  openInvoice?: (url: string, callback?: (status: string) => void) => void
+}
+
 const formatAssetAmount = (minor: number, decimals: number) => {
   const value = minor / 10 ** decimals
 
@@ -58,6 +62,7 @@ const Replenishment: Component<Replenishment> = (props) => {
     store.products.find((product) => product.id === store.productID),
   )
   const selectedAsset = createMemo(() => findReplenishmentAsset(store.assetCode))
+  const isTelegramStars = createMemo(() => selectedAsset().code === "XTR")
   const paymentAmountMinor = createMemo(() => {
     const product = selectedProduct()
 
@@ -97,7 +102,7 @@ const Replenishment: Component<Replenishment> = (props) => {
   const pay = async () => {
     const product = selectedProduct()
 
-    if (!core.tonConnect.connected) {
+    if (!isTelegramStars() && !core.tonConnect.connected) {
       await bindWallet()
       return
     }
@@ -110,6 +115,11 @@ const Replenishment: Component<Replenishment> = (props) => {
     setStore("error", "")
 
     try {
+      if (isTelegramStars()) {
+        await payWithTelegramStars(product)
+        return
+      }
+
       const sourceWallet = core.tonConnect.address
 
       if (!sourceWallet) {
@@ -134,11 +144,45 @@ const Replenishment: Component<Replenishment> = (props) => {
       core.state.balance.refresh()
       core.route.goBack()
     } catch (error) {
-      console.error("[replenishment] TON payment failed", error)
+      console.error("[replenishment] payment failed", error)
       setStore("error", "Платёж не был отправлен")
     } finally {
       setStore("paying", false)
     }
+  }
+
+  const payWithTelegramStars = async (product: Product) => {
+    const webApp = (window.Telegram?.WebApp || window.NativeTelegramWebApp) as TelegramWebApp | undefined
+    if (!webApp?.openInvoice) {
+      setStore("error", "Оплата XTR доступна только в Telegram")
+      return
+    }
+
+    const operationID = crypto.randomUUID?.() || `${Date.now()}-${Math.random()}`
+    const { response, error } = await core.api.payment.telegramStarsInvoice({
+      id: product.id,
+      quantity: store.value,
+      operation_id: operationID,
+      locale: "ru",
+    })
+
+    if (error || !response) {
+      setStore("error", "Не удалось создать счёт в Telegram Stars")
+      return
+    }
+
+    const status = await new Promise<string>((resolve) => {
+      webApp.openInvoice?.(response.invoice_link, resolve)
+    })
+    if (status !== "paid") {
+      if (status !== "cancelled") {
+        setStore("error", "Платёж не был завершён")
+      }
+      return
+    }
+
+    core.state.balance.refresh()
+    core.route.goBack()
   }
 
   const bindWallet = async () => {
@@ -262,21 +306,23 @@ const Replenishment: Component<Replenishment> = (props) => {
             </Text.Content>
           </Text>
         </Flex>
-        <Flex padding={"0px 10px"} gap={"4px"} direction={"column"}>
-          <Text color={"secondary"} size={"small"}>
-            <Text.Content>
-              {core.tonConnect.connected ? "Привязанный кошелёк" : "Сначала привяжите TON кошелёк"}
-            </Text.Content>
-          </Text>
-          <Show when={core.tonConnect.connected}>
-            <Text size={"small"}>
+        <Show when={!isTelegramStars()}>
+          <Flex padding={"0px 10px"} gap={"4px"} direction={"column"}>
+            <Text color={"secondary"} size={"small"}>
               <Text.Content>
-                {core.tonConnect.walletName ? `${core.tonConnect.walletName}: ` : ""}
-                {core.tonConnect.shortAddress}
+                {core.tonConnect.connected ? "Привязанный кошелёк" : "Сначала привяжите TON кошелёк"}
               </Text.Content>
             </Text>
-          </Show>
-        </Flex>
+            <Show when={core.tonConnect.connected}>
+              <Text size={"small"}>
+                <Text.Content>
+                  {core.tonConnect.walletName ? `${core.tonConnect.walletName}: ` : ""}
+                  {core.tonConnect.shortAddress}
+                </Text.Content>
+              </Text>
+            </Show>
+          </Flex>
+        </Show>
         <Show when={store.error}>
           <Flex padding={"0px 10px"} style={{ width: "100%", "box-sizing": "border-box" }}>
             <Text color={"red"} size={"small"}>
@@ -329,16 +375,17 @@ const Replenishment: Component<Replenishment> = (props) => {
             loading={
               store.loading ||
               store.paying ||
-              core.tonConnect.restoring ||
-              core.tonConnect.connecting
+              (!isTelegramStars() && (core.tonConnect.restoring || core.tonConnect.connecting))
             }
-            disabled={core.tonConnect.connected && (!selectedProduct() || !store.value)}
+            disabled={(isTelegramStars() || core.tonConnect.connected) && (!selectedProduct() || !store.value)}
             onClick={pay}
           >
             <Button.Content>
               <Text color={"inherit"} align={"center"}>
                 <Text.Content>
-                  {core.tonConnect.connected
+                  {isTelegramStars()
+                    ? "Пополнить через XTR"
+                    : core.tonConnect.connected
                     ? `Пополнить через ${selectedAsset().label}`
                     : "Привязать кошелёк"}
                 </Text.Content>
