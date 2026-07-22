@@ -20,7 +20,7 @@ export const getHost = () => {
 
 export const VK_APP_ID = 7798122
 
-export const TELEGRAM_APP_ID = 8279098140
+export const TELEGRAM_APP_ID = 8745614678
 export const TELEGRAM_BOT_PATH = "anonmsgr_bot"
 
 export const VK_GROUP_ID = 204427314
